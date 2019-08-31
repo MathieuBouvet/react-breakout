@@ -1,18 +1,14 @@
-import settings from './Settings'
 
 import Paddle from './PaddleModel'
 
-class GameModel {
-	constructor(){
-		this.paddle = new Paddle(settings.paddle)
+import Settable from './Settable'
+
+class GameModel extends Settable{
+	constructor(reduction){
+		super("board", reduction);
+		this.paddle = new Paddle(reduction);
 	}
 
-	get width(){
-		return settings.board.width;
-	}
-	get height(){
-		return settings.board.height;
-	}
 	updatePaddlePosition(position){
 		// compensate position to center the paddle around the cursor
 		position -= this.paddle.width/2;

@@ -10,7 +10,7 @@ class GameBoard extends Component {
 		this.state = {
 			paddlePosition: 0,
 		}
-		this.gameModel = new GameModel();
+		this.gameModel = new GameModel(1);
 	}
 
 	render(){
