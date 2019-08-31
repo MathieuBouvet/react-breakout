@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import throttle from 'lodash.throttle'
 import './GameBoard.css'
 
 import Paddle from './Paddle'
@@ -10,7 +11,9 @@ class GameBoard extends Component {
 		this.state = {
 			paddlePosition: 0,
 		}
-		this.gameModel = new GameModel(1);
+		this.gameModel = new GameModel(0.75);
+		// throttling and binding
+		this.throttledMouseMoveHandler = throttle(this.throttledMouseMoveHandler.bind(this), 10);
 	}
 
 	render(){
@@ -28,12 +31,19 @@ class GameBoard extends Component {
 		)
 	}
 
+	// React synthetic event are pooled, and not available asyncronously
+	// So we need this trick with two functions
 	handleMouseMove = (event) => {
-		this.gameModel.updatePaddlePosition(event.nativeEvent.offsetX);
+		// we send the value, not the event, that's the trick
+		this.throttledMouseMoveHandler(event.nativeEvent.offsetX);
+	}
+	throttledMouseMoveHandler(position){
+		this.gameModel.updatePaddlePosition(position);
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
 		});
 	}
+
 }
 
 export default GameBoard
