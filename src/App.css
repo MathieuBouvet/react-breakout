@@ -35,7 +35,7 @@ html {
 }
 .side-panel-container {
 	flex: 0 1 200px;
-	background-color: red;
+	background-color: gray;
 }
 
 .App-link {
