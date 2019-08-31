@@ -1,6 +1,6 @@
 import settings from './Settings'
 
-import Paddle from './Paddle'
+import Paddle from './PaddleModel'
 
 class GameModel {
 	constructor(){

@@ -1,4 +1,4 @@
-class Paddle {
+class PaddleModel {
 	constructor(settingsObject){
 		this.height = settingsObject.height;
 		this.width = settingsObject.width;
@@ -7,4 +7,4 @@ class Paddle {
 	}
 }
 
-export default Paddle
+export default PaddleModel
