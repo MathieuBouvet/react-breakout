@@ -1,28 +1,31 @@
-const BOARD_WIDTH = 1000;
-const BOARD_HEIGHT = 600;
+import settings from './Settings'
+
+import Paddle from './Paddle'
 
 class GameModel {
 	constructor(){
-		this.paddlePosition = 0;
+		this.paddle = new Paddle(settings.paddle)
 	}
 
 	get width(){
-		return BOARD_WIDTH;
+		return settings.board.width;
 	}
 	get height(){
-		return BOARD_HEIGHT;
+		return settings.board.height;
 	}
 	updatePaddlePosition(position){
-		// compensate position to center it relative to the cursor
-		// 100 should be replace with paddle width/2
-		position -= 100;
+		// compensate position to center the paddle around the cursor
+		position -= this.paddle.width/2;
+
+		// stop paddle to the right
 		if(position <= 0){
 			position = 0;
 		}
-		if(position >= this.width - 200){
-			position = this.width - 200;
+		//stop paddle to the left
+		if(position >= this.width - this.paddle.width){
+			position = this.width - this.paddle.width;
 		}
-		this.paddlePosition = position;
+		this.paddle.leftPosition = position;
 	}
 }
 

@@ -18,7 +18,12 @@ class GameBoard extends Component {
 		return (
 			<div className="gameBoard" style={{width: this.gameModel.width+"px", height: this.gameModel.height+"px"}}>
 				<div className="mouseMoveOverlay" onMouseMove={this.handleMouseMove}></div>
-				<Paddle leftPosition={paddlePosition} />
+				<Paddle 
+					leftPosition={paddlePosition}
+					topPosition={this.gameModel.paddle.topPosition}
+					height={this.gameModel.paddle.height}
+					width={this.gameModel.paddle.width}
+				/>
 			</div>
 		)
 	}
@@ -26,7 +31,7 @@ class GameBoard extends Component {
 	handleMouseMove = (event) => {
 		this.gameModel.updatePaddlePosition(event.nativeEvent.offsetX);
 		this.setState({
-			paddlePosition: this.gameModel.paddlePosition,
+			paddlePosition: this.gameModel.paddle.leftPosition,
 		});
 	}
 }

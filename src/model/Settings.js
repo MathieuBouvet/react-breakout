@@ -5,7 +5,9 @@ const settings = {
 	},
 	paddle: {
 		height: 20,
-		width: 100,
+		width: 150,
+		topPos: 570,
+		leftPos: 0,
 	},
 }
 
