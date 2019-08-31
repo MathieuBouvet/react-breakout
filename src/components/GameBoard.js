@@ -17,6 +17,7 @@ class GameBoard extends Component {
 		const { paddlePosition } = this.state;
 		return (
 			<div className="gameBoard" style={{width: this.gameModel.width+"px", height: this.gameModel.height+"px"}}>
+				<div className="mouseMoveOverlay" onMouseMove={this.handleMouseMove}></div>
 				<Paddle leftPosition={paddlePosition} />
 			</div>
 		)

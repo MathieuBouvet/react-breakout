@@ -1,15 +1,13 @@
 .gameBoard {
-	width: 1000px;
-	height: 600px;
 	border: solid 1px black;
 	position: relative;
 }
 
-.test {
-	background-color: red;
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	top:100px;
-	left:100px;
+.mouseMoveOverlay {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+	z-index: 1000;
 }
+
