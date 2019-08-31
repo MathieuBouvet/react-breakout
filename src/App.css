@@ -29,7 +29,9 @@ html {
 }
 .game-container {
 	flex: 1 1 auto;
-	
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .side-panel-container {
 	flex: 0 1 200px;
