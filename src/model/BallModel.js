@@ -37,6 +37,11 @@ class BallModel extends PositionableEntity {
 		}
 		this.angle = angle;
 	}
+
+	moveTo(angle){
+		this.setAngle(angle);
+		this.moveToNextPosition();
+	}
 }
 
 export default BallModel
