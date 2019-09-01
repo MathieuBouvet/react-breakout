@@ -31,7 +31,6 @@ html {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	cursor: none;
 }
 .side-panel-container {
 	flex: 0 1 200px;

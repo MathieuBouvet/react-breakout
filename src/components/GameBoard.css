@@ -1,6 +1,7 @@
 .gameBoard {
 	border: solid 1px black;
 	position: relative;
+	cursor: none;
 }
 
 .mouseMoveOverlay {
