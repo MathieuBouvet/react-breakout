@@ -15,7 +15,7 @@ class BallModel extends PositionableEntity {
 	getNextPosition(){
 		return {
 			left: this.leftPosition + (this.velocity * Math.cos(r(this.angle))),
-			top: this.topPosition + (this.velocity * Math.sin(r(this.angle))),
+			top: this.topPosition + (this.velocity * Math.sin(r(-this.angle))),
 		}
 	}
 	setNextPosition(nextPositionObject){
