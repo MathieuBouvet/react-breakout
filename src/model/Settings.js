@@ -13,6 +13,16 @@ const settings = {
 			leftPosition: 0,
 		},
 	},
+	ball: {
+		dynamic: {
+			velocity: 10,
+			topPosition: 150,
+			leftPosition: 150,
+		},
+		static: {
+			angle: 90,
+		}
+	}
 }
 
 export default settings
