@@ -1,7 +1,7 @@
 const settings = {
 	board: {
 		dynamic: {
-			height: 600,
+			height: 625,
 			width: 1000,
 		}
 	},
@@ -9,11 +9,9 @@ const settings = {
 		dynamic: {
 			height: 10,
 			width: 150,
-			topPosition: 580,
-		},
-		static: {
+			topPosition: 610,
 			leftPosition: 0,
-		}
+		},
 	},
 }
 
