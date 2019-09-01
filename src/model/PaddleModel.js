@@ -10,8 +10,8 @@ class PaddleModel extends Box{
 		// ratio of the collision offset
 		const ballOffset = (next.left - this.leftPosition) / this.width;
 
-		// projection of this ratio between 135 (max left angle) and 45 (max right angle)
-		const angle = 135 - 90 * ballOffset;
+		// projection of this ratio between 145 (max 35° left angle) and 35 (max 35° right angle)
+		const angle = 145 - 110 * ballOffset;
 		ball.moveTo(angle);
 	}
 }
