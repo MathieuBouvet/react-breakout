@@ -16,12 +16,12 @@ const settings = {
 	ball: {
 		dynamic: {
 			velocity: 15,
-			topPosition: 150,
-			leftPosition: 150,
+			topPosition: 500,
+			leftPosition: 800,
 			size: 15,
 		},
 		static: {
-			angle: 90,
+			angle: 60,
 		}
 	}
 }

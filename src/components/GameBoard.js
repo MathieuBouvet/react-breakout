@@ -10,7 +10,7 @@ import GameModel from '../model/GameModel'
 class GameBoard extends Component {
 	constructor(props) {
 		super(props);
-		this.gameModel = new GameModel(0.75);
+		this.gameModel = new GameModel(1);
 		this.state = {
 			paddlePosition: 0,
 			ballLeftPosition: this.gameModel.ball.leftPosition,
