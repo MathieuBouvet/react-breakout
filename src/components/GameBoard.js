@@ -3,6 +3,8 @@ import throttle from 'lodash.throttle'
 import './GameBoard.css'
 
 import Paddle from './Paddle'
+import Ball from './Ball'
+
 import GameModel from '../model/GameModel'
 
 class GameBoard extends Component {
@@ -26,6 +28,11 @@ class GameBoard extends Component {
 					topPosition={this.gameModel.paddle.topPosition}
 					height={this.gameModel.paddle.height}
 					width={this.gameModel.paddle.width}
+				/>
+				<Ball
+					leftPosition={this.gameModel.ball.leftPosition}
+					topPosition={this.gameModel.ball.topPosition}
+					size={this.gameModel.ball.size}
 				/>
 			</div>
 		)

@@ -1,5 +1,6 @@
 
 import Paddle from './PaddleModel'
+import Ball from './BallModel'
 
 import Settable from './Settable'
 
@@ -7,6 +8,7 @@ class GameModel extends Settable{
 	constructor(reduction){
 		super("board", reduction);
 		this.paddle = new Paddle(reduction);
+		this.ball = new Ball(reduction);
 	}
 
 	updatePaddlePosition(position){
