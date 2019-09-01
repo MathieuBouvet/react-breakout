@@ -36,6 +36,8 @@ class GameModel extends ConfigurableEntity{
 			this.wallCollision(270);
 		}else if(nextPosition.top < 0){
 			this.wallCollision(180);
+		}else if(this.paddle.willCollide(nextPosition)){
+			this.paddle.collide(this.ball);
 		}else {
 			this.ball.moveToNextPosition();
 		}
