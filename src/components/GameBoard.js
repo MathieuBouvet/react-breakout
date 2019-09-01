@@ -47,7 +47,7 @@ class GameBoard extends Component {
 				ballLeftPosition: this.gameModel.ball.leftPosition,
 				ballTopPosition: this.gameModel.ball.topPosition,
 			});
-		}, 1000);
+		}, 40);
 	}
 	componentWillUnmount(){
 		clearInterval(this.runTheGame);

@@ -7,7 +7,7 @@ const settings = {
 	},
 	paddle: {
 		dynamic: {
-			height: 10,
+			height: 15,
 			width: 150,
 			topPosition: 610,
 			leftPosition: 0,
@@ -15,10 +15,10 @@ const settings = {
 	},
 	ball: {
 		dynamic: {
-			velocity: 10,
+			velocity: 15,
 			topPosition: 150,
 			leftPosition: 150,
-			size: 20,
+			size: 15,
 		},
 		static: {
 			angle: 90,
