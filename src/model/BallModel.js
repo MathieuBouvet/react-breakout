@@ -10,14 +10,22 @@ class BallModel extends PositionableEntity {
 		this.setting("angle");
 		this.setting("velocity");
 		this.setting("size");
-		this.nextPosition = this.getNextPosition();
 	}
 
 	getNextPosition(){
 		return {
 			left: this.leftPosition + (this.velocity * Math.cos(r(this.angle))),
-			top: this.topPosition + (this.velocity * Math.cos(r(this.angle))),
+			top: this.topPosition + (this.velocity * Math.sin(r(this.angle))),
 		}
+	}
+	setNextPosition(nextPositionObject){
+		console.log(nextPositionObject);
+		this.topPosition = nextPositionObject.top;
+		this.leftPosition = nextPositionObject.left;
+	}
+
+	moveToNextPosition(){
+		this.setNextPosition(this.getNextPosition());
 	}
 }
 
