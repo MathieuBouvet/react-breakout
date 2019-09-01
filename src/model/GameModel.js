@@ -25,6 +25,10 @@ class GameModel extends Settable{
 		}
 		this.paddle.leftPosition = position;
 	}
+
+	run(){
+		this.ball.moveToNextPosition();
+	}
 }
 
 export default GameModel
