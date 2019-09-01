@@ -1,12 +1,8 @@
-import ConfigurableEntity from './ConfigurableEntity'
+import Box from './Box'
 
-class PaddleModel extends ConfigurableEntity{
+class PaddleModel extends Box{
 	constructor(reduction) {
 		super("paddle", reduction);
-		this.setting("width");
-		this.setting("height");
-		this.setting("topPosition");
-		this.setting("leftPosition");
 	}
 }
 
