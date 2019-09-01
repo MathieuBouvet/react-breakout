@@ -2,11 +2,13 @@
 import Paddle from './PaddleModel'
 import Ball from './BallModel'
 
-import Settable from './Settable'
+import ConfigurableEntity from './ConfigurableEntity'
 
-class GameModel extends Settable{
+class GameModel extends ConfigurableEntity{
 	constructor(reduction){
 		super("board", reduction);
+		this.setting("width");
+		this.setting("height");
 		this.paddle = new Paddle(reduction);
 		this.ball = new Ball(reduction);
 	}
