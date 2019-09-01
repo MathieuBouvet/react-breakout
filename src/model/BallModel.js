@@ -9,6 +9,7 @@ class BallModel extends PositionableEntity {
 		super("ball", coefficient);
 		this.setting("angle");
 		this.setting("velocity");
+		this.setting("size");
 		this.nextPosition = this.getNextPosition();
 	}
 

@@ -18,6 +18,7 @@ const settings = {
 			velocity: 10,
 			topPosition: 150,
 			leftPosition: 150,
+			size: 20,
 		},
 		static: {
 			angle: 90,
