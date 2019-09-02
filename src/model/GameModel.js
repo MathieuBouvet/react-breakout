@@ -9,8 +9,8 @@ class GameModel extends ConfigurableEntity{
 		super("board", reduction);
 		this.setting("width");
 		this.setting("height");
-		this.paddle = new Paddle(reduction);
-		this.ball = new Ball(reduction);
+		this.addBindedChild("paddle", new Paddle());
+		this.addBindedChild("ball", new Ball());
 	}
 
 	updatePaddlePosition(position){
