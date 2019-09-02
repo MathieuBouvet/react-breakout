@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './Box.css'
+import './Sizable.css'
 
-const Box = ({width, height, children}) => (
+const Sizable = ({width, height, children}) => (
 	<div 
-		className="box-component"
+		className="sizable"
 		style={{
 			height: height+'px',
 			width: width+'px',
@@ -14,9 +14,9 @@ const Box = ({width, height, children}) => (
 	</div>
 )
 
-Box.propTypes = {
+Sizable.propTypes = {
 	width: PropTypes.number.isRequired,
 	height: PropTypes.number.isRequired,
 }
 
-export default Box
+export default Sizable

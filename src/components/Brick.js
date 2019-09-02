@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Positionable from './Positionable'
-import Box from './Box'
+import Sizable from './Sizable'
 
 import './Brick.css'
 
 const Brick = ({top, left, height, width}) => (
 	<Positionable top={top} left={left}>
-		<Box width={width} height={height}>
+		<Sizable width={width} height={height}>
 			<div className="brick"></div>
-		</Box>
+		</Sizable>
 	</Positionable>
 )
 

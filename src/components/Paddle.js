@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import './Paddle.css'
 
 import Positionable from './Positionable'
-import Box from './Box'
+import Sizable from './Sizable'
 
 const Paddle = ({top, left, width, height}) => (
 	<Positionable top={top} left={left}>
-		<Box width={width} height={height}>
+		<Sizable width={width} height={height}>
 			<div className="paddle"></div>
-		</Box>
+		</Sizable>
 	</Positionable>
 )
 
