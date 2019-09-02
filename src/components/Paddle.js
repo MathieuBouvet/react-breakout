@@ -1,19 +1,24 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './Paddle.css'
 
 import Positionable from './Positionable'
+import Box from './Box'
 
-const Paddle = ({leftPosition, topPosition, width, height}) => (
-	<Positionable top={topPosition} left={leftPosition}>
-		<div 
-			className="paddle"
-			style={{
-				width: width+'px',
-				height: height+'px',
-			}}>
-		</div>
+const Paddle = ({top, left, width, height}) => (
+	<Positionable top={top} left={left}>
+		<Box width={width} height={height}>
+			<div className="paddle"></div>
+		</Box>
 	</Positionable>
 )
+
+Paddle.propTypes = {
+	top: PropTypes.number.isRequired,
+	left: PropTypes.number.isRequired,
+	width: PropTypes.number.isRequired,
+	height: PropTypes.number.isRequired,
+}
 
 export default Paddle

@@ -26,14 +26,14 @@ class GameBoard extends Component {
 			<div className="gameBoard" style={{width: this.gameModel.width+"px", height: this.gameModel.height+"px"}}>
 				<div className="mouseMoveOverlay" onMouseMove={this.handleMouseMove}></div>
 				<Paddle 
-					leftPosition={paddlePosition}
-					topPosition={this.gameModel.paddle.topPosition}
-					height={this.gameModel.paddle.height}
+					top={this.gameModel.paddle.topPosition}
+					left={paddlePosition}
 					width={this.gameModel.paddle.width}
+					height={this.gameModel.paddle.height}
 				/>
 				<Ball
-					leftPosition={ballLeftPosition}
-					topPosition={ballTopPosition}
+					top={ballTopPosition}
+					left={ballLeftPosition}
 					size={this.gameModel.ball.size}
 				/>
 			</div>
