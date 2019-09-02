@@ -5,7 +5,7 @@ class ConfigurableEntity {
 	constructor(templateName, bindValue=1){
 		this._setTemplate(templateName);
 		this.bindValue = bindValue;
-		this.binded = [];
+		this.bindedProperties = [];
 		this.bindedChildren = [];
 	}
 	setting(propertyName){
@@ -13,7 +13,7 @@ class ConfigurableEntity {
 		const theSettings = Settings.templates[this.templateName];
 		if(dynamic){
 			this[propertyName] = theSettings.dynamic[propertyName] * this.bindValue;
-			this.binded.push(propertyName);
+			this.bindedProperties.push(propertyName);
 		}else{
 			this[propertyName] = theSettings.static[propertyName];
 		}
@@ -74,8 +74,8 @@ class ConfigurableEntity {
 
 	updateBindValue(newBindValue){
 		this.bindValue = newBindValue;
-		for(let i=0; i<this.binded.length ; i++){
-			const bindedProperty = this.binded[i];
+		for(let i=0; i<this.bindedProperties.length ; i++){
+			const bindedProperty = this.bindedProperties[i];
 			this[bindedProperty] = this[bindedProperty] * newBindValue;
 		}
 		for(let i=0 ; i<this.bindedChildren.length ; i++){
