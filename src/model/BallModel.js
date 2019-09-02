@@ -19,7 +19,6 @@ class BallModel extends PositionableEntity {
 		}
 	}
 	setNextPosition(nextPositionObject){
-		console.log(nextPositionObject);
 		this.topPosition = nextPositionObject.top;
 		this.leftPosition = nextPositionObject.left;
 	}
