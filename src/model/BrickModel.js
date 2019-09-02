@@ -1,6 +1,6 @@
 import Box from './Box'
 
-class Brick extends Box {
+class BrickModel extends Box {
 	constructor(){
 		super("brick");
 		this.leftPosition = 42;
@@ -8,4 +8,4 @@ class Brick extends Box {
 	}
 }
 
-export default Brick
+export default BrickModel
