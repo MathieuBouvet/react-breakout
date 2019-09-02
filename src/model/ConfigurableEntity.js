@@ -2,15 +2,15 @@ import Settings from "./Settings"
 
 
 class ConfigurableEntity {
-	constructor(templateName, coefficient){
+	constructor(templateName, bindValue){
 		this._setTemplate(templateName);
-		this.coefficient = coefficient;
+		this.bindValue = bindValue;
 	}
 	setting(propertyName){
 		const dynamic = this._checkSetting(propertyName);
 		const theSettings = Settings.templates[this.templateName];
 		if(dynamic){
-			this[propertyName] = theSettings.dynamic[propertyName] * this.coefficient;
+			this[propertyName] = theSettings.dynamic[propertyName] * this.bindValue;
 		}else{
 			this[propertyName] = theSettings.static[propertyName];
 		}
@@ -62,6 +62,8 @@ class ConfigurableEntity {
 		}
 		return dynamicKeyFound;
 	}
+
+
 }
 
 export default ConfigurableEntity
