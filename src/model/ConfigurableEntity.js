@@ -5,12 +5,14 @@ class ConfigurableEntity {
 	constructor(templateName, bindValue){
 		this._setTemplate(templateName);
 		this.bindValue = bindValue;
+		this.binded = [];
 	}
 	setting(propertyName){
 		const dynamic = this._checkSetting(propertyName);
 		const theSettings = Settings.templates[this.templateName];
 		if(dynamic){
 			this[propertyName] = theSettings.dynamic[propertyName] * this.bindValue;
+			this.binded.push(propertyName);
 		}else{
 			this[propertyName] = theSettings.static[propertyName];
 		}
@@ -61,6 +63,15 @@ class ConfigurableEntity {
 			throw new Error(`Setting "${settingName}" does not exist in ${this.templateName} template.`);
 		}
 		return dynamicKeyFound;
+	}
+
+	updateBindValue(newBindValue){
+		this.bindValue = newBindValue;
+		for(let i=0; i<this.binded.length ; i++){
+			const bindedProperty = this.binded[i];
+			this[bindedProperty] = this[bindedProperty] * newBindValue;
+		}
+		// TODO : update children
 	}
 
 
