@@ -4,6 +4,7 @@ import './GameBoard.css'
 
 import Paddle from './Paddle'
 import Ball from './Ball'
+import Brick from './Brick'
 
 import GameModel from '../model/GameModel'
 
@@ -35,6 +36,12 @@ class GameBoard extends Component {
 					top={ballTopPosition}
 					left={ballLeftPosition}
 					size={this.gameModel.ball.size}
+				/>
+				<Brick 
+					top={this.gameModel.brick.topPosition}
+					left={this.gameModel.brick.leftPosition}
+					width={this.gameModel.brick.width}
+					height={this.gameModel.brick.height}
 				/>
 			</div>
 		)

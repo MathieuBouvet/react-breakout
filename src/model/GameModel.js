@@ -1,6 +1,7 @@
 
 import Paddle from './PaddleModel'
 import Ball from './BallModel'
+import Brick from './BrickModel'
 
 import ConfigurableEntity from './ConfigurableEntity'
 
@@ -11,6 +12,7 @@ class GameModel extends ConfigurableEntity{
 		this.setting("height");
 		this.addBindedChild("paddle", new Paddle());
 		this.addBindedChild("ball", new Ball());
+		this.addBindedChild("brick", new Brick());
 	}
 
 	updatePaddlePosition(position){

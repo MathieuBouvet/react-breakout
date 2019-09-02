@@ -24,6 +24,14 @@ const settings = {
 			free: {
 				angle: 60,
 			}
+		},
+		brick: {
+			binded: {
+				leftPosition: 0,
+				topPosition: 0,
+				height: 25,
+				width: 25,
+			}
 		}
 	}
 }
