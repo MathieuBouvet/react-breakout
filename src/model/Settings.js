@@ -1,13 +1,13 @@
 const settings = {
 	templates: {
 		board: {
-			dynamic: {
+			binded: {
 				height: 625,
 				width: 1000,
-			}
+			},
 		},
 		paddle: {
-			dynamic: {
+			binded: {
 				height: 15,
 				width: 150,
 				topPosition: 610,
@@ -15,13 +15,13 @@ const settings = {
 			},
 		},
 		ball: {
-			dynamic: {
+			binded: {
 				velocity: 15,
 				topPosition: 500,
 				leftPosition: 800,
 				size: 15,
 			},
-			static: {
+			free: {
 				angle: 60,
 			}
 		}

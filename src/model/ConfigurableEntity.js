@@ -9,13 +9,13 @@ class ConfigurableEntity {
 		this.bindedChildren = [];
 	}
 	setting(propertyName){
-		const dynamic = this._checkSetting(propertyName);
+		const binded = this._checkSetting(propertyName);
 		const theSettings = Settings.templates[this.templateName];
-		if(dynamic){
-			this[propertyName] = theSettings.dynamic[propertyName] * this.bindValue;
+		if(binded){
+			this[propertyName] = theSettings.binded[propertyName] * this.bindValue;
 			this.bindedProperties.push(propertyName);
 		}else{
-			this[propertyName] = theSettings.static[propertyName];
+			this[propertyName] = theSettings.free[propertyName];
 		}
 	}
 	_setTemplate(templateName){
@@ -23,47 +23,47 @@ class ConfigurableEntity {
 		if(typeof templateSetting === 'undefined'){
 			throw new Error(`Template "${templateName}" does not exist in Settings.`)
 		}
-		// dynamic key exist, but no entries in it
-		if(typeof templateSetting.dynamic !== 'undefined' && 
-			(Object.keys(templateSetting.dynamic).length === 0 
-			&& templateSetting.dynamic.constructor === Object)){
+		// binded key exist, but no entries in it
+		if(typeof templateSetting.binded !== 'undefined' && 
+			(Object.keys(templateSetting.binded).length === 0 
+			&& templateSetting.binded.constructor === Object)){
 
-			throw new Error(`No keys found under "dynamic" for ${templateName} template in settings.`);
+			throw new Error(`No keys found under "binded" for ${templateName} template in settings.`);
 		}
-		this.dynamicEnabled = (typeof templateSetting.dynamic !== 'undefined');
-		// static key exist, but no entries in it
-		if(typeof templateSetting.static !== 'undefined' && 
-			(Object.keys(templateSetting.static).length === 0 
-			&& templateSetting.static.constructor === Object)){
+		this.hasBindedSettings = (typeof templateSetting.binded !== 'undefined');
+		// free key exist, but no entries in it
+		if(typeof templateSetting.free !== 'undefined' && 
+			(Object.keys(templateSetting.free).length === 0 
+			&& templateSetting.free.constructor === Object)){
 
-			throw new Error(`No keys found under "static" for ${templateName} template in settings.`);
+			throw new Error(`No keys found under "free" for ${templateName} template in settings.`);
 		}
-		this.staticEnabled = (typeof templateSetting.static !== 'undefined');
+		this.hasFreeSettings = (typeof templateSetting.free !== 'undefined');
 		this.templateName = templateName;
 	}
 
-	// return true if dynamic key exists, false if static key exists, throw errors otherwise
+	// return true if a binded key exists, false if a free key exists, throw errors otherwise
 	_checkSetting(settingName){
-		let dynamicKeyFound = false;
-		let staticKeyFound = false;
+		let bindedKeyFound = false;
+		let freeKeyFound = false;
 		
 		const theSettings = Settings.templates[this.templateName]
-		// look for setting in dynamic if there are dynamic settings in template
-		if(this.dynamicEnabled){
-			dynamicKeyFound = (typeof theSettings.dynamic[settingName] !== 'undefined');
+		// look for setting in binded if there are binded settings in template
+		if(this.hasBindedSettings){
+			bindedKeyFound = (typeof theSettings.binded[settingName] !== 'undefined');
 		}
 
-		// look for setting in static if there are static settings in template
-		if(this.staticEnabled){
-			staticKeyFound = (typeof theSettings.static[settingName] !== 'undefined');
+		// look for setting in free if there are free settings in template
+		if(this.hasFreeSettings){
+			freeKeyFound = (typeof theSettings.free[settingName] !== 'undefined');
 		}
-		if(dynamicKeyFound && staticKeyFound){
-			throw new Error(`Key "${settingName}" exists as static AND dynamic in ${this.templateName} template.`);
+		if(bindedKeyFound && freeKeyFound){
+			throw new Error(`Key "${settingName}" exists as free AND binded in ${this.templateName} template.`);
 		}
-		if(!dynamicKeyFound && !staticKeyFound){
+		if(!bindedKeyFound && !freeKeyFound){
 			throw new Error(`Setting "${settingName}" does not exist in ${this.templateName} template.`);
 		}
-		return dynamicKeyFound;
+		return bindedKeyFound;
 	}
 
 	addBindedChild(name, child){
