@@ -8,7 +8,7 @@ class ConfigurableEntity {
 	}
 	setting(propertyName){
 		const dynamic = this._checkSetting(propertyName);
-		const theSettings = Settings[this.templateName];
+		const theSettings = Settings.templates[this.templateName];
 		if(dynamic){
 			this[propertyName] = theSettings.dynamic[propertyName] * this.coefficient;
 		}else{
@@ -16,7 +16,7 @@ class ConfigurableEntity {
 		}
 	}
 	_setTemplate(templateName){
-		const templateSetting = Settings[templateName];
+		const templateSetting = Settings.templates[templateName];
 		if(typeof templateSetting === 'undefined'){
 			throw new Error(`Template "${templateName}" does not exist in Settings.`)
 		}
@@ -44,7 +44,7 @@ class ConfigurableEntity {
 		let dynamicKeyFound = false;
 		let staticKeyFound = false;
 		
-		const theSettings = Settings[this.templateName]
+		const theSettings = Settings.templates[this.templateName]
 		// look for setting in dynamic if there are dynamic settings in template
 		if(this.dynamicEnabled){
 			dynamicKeyFound = (typeof theSettings.dynamic[settingName] !== 'undefined');
