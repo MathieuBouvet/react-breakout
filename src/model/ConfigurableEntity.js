@@ -2,10 +2,11 @@ import Settings from "./Settings"
 
 
 class ConfigurableEntity {
-	constructor(templateName, bindValue){
+	constructor(templateName, bindValue=1){
 		this._setTemplate(templateName);
 		this.bindValue = bindValue;
 		this.binded = [];
+		this.bindedChildren = [];
 	}
 	setting(propertyName){
 		const dynamic = this._checkSetting(propertyName);
@@ -65,13 +66,22 @@ class ConfigurableEntity {
 		return dynamicKeyFound;
 	}
 
+	addBindedChild(name, child){
+		this[name] = child;
+		this.bindedChildren.push(name);
+		this[name].updateBindValue(this.bindValue);
+	}
+
 	updateBindValue(newBindValue){
 		this.bindValue = newBindValue;
 		for(let i=0; i<this.binded.length ; i++){
 			const bindedProperty = this.binded[i];
 			this[bindedProperty] = this[bindedProperty] * newBindValue;
 		}
-		// TODO : update children
+		for(let i=0 ; i<this.bindedChildren.length ; i++){
+			const bindedChild = this.bindedChildren[i];
+			this[bindedChild].updateBindValue(newBindValue);
+		}
 	}
 
 
