@@ -38,6 +38,8 @@ class GameModel extends Box{
 		return position.top > this.height;
 	}
 
+	// return the angle of the perpendicular of wall collisioning
+	// 180 for top wall, 90 for right, and 270 for left
 	collisionHow(position){
 		if(position.left < 0){
 			return 270;
@@ -48,11 +50,6 @@ class GameModel extends Box{
 		if(position.top < 0){
 			return 180;
 		}
-	}
-
-	collide(ball){
-		const nextPosition = ball.getNextPosition();
-		this.wallCollision(this.collisionHow(nextPosition));
 	}
 
 	run(){
@@ -66,33 +63,8 @@ class GameModel extends Box{
 		}else {
 			this.ball.moveToNextPosition();
 		}
-		
-		
 	}
 
-	// //wallCollision(aiguCallback, obtusCallback, )
-	// topWallCollision(){
-	// 	const incidence = (180 - this.ball.angle);
-	// 	this.ball.moveTo(this.ball.angle + 2*incidence);
-	// }
-
-	// leftWallCollision(){
-	// 	const incidence = (270 - this.ball.angle);
-	// 	this.ball.moveTo(this.ball.angle + 2*incidence);
-	// }
-
-
-	// rightWallCollision(){
-	// 	const incidence = (90 - this.ball.angle);
-	// 	this.ball.moveTo(this.ball.angle + 2*incidence);
-	// }
-
-	// wallAngle is the angle of the perpendicular of wall collisioning
-	// 180 for top wall, 90 for right, and 270 for left
-	wallCollision(wallAngle){
-		const incidence = (wallAngle - this.ball.angle);
-		this.ball.moveTo(this.ball.angle + 2*incidence);
-	}
 }
 
 export default GameModel

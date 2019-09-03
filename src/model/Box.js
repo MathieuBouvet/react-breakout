@@ -23,7 +23,11 @@ class Box extends PositionableEntity {
 	}
 
 	collide(ball){
-		throw new Error(`method 'collide' must be implemented in child class.`);
+		const nextPosition = ball.getNextPosition();
+		const how = this.collisionHow(nextPosition);
+		
+		const incidence = (how - this.ball.angle);
+		this.ball.moveTo(this.ball.angle + 2*incidence);
 	}
 }
 
