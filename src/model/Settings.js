@@ -26,12 +26,12 @@ const settings = {
 		ball: {
 			binded: {
 				velocity: 15,
-				topPosition: 550,
+				topPosition: 370,
 				leftPosition: 550,
 				size: 15,
 			},
 			free: {
-				angle: 135,
+				angle: 60,
 			}
 		},
 		brick: {
@@ -60,6 +60,11 @@ const settings = {
 					type: BrickTypes.NORMAL,
 					topPosition: 150,
 					leftPosition: 50,
+				},
+				{
+					type: BrickTypes.NORMAL,
+					topPosition: 150,
+					leftPosition: 650,
 				},
 			]
 		}
