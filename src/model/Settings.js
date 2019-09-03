@@ -47,19 +47,16 @@ const settings = {
 		level1:{
 			bricks: [
 				{
-					id: "1",
 					type: BrickTypes.NORMAL,
 					topPosition: 50,
 					leftPosition: 50,
 				},
 				{
-					id: "2",
 					type: BrickTypes.NORMAL,
 					topPosition: 150,
 					leftPosition: 150,
 				},
 				{
-					id: "3",
 					type: BrickTypes.NORMAL,
 					topPosition: 150,
 					leftPosition: 50,

@@ -1,3 +1,5 @@
+import shortid from 'shortid'
+
 import Box from './Box'
 
 class BrickModel extends Box {
@@ -5,7 +7,7 @@ class BrickModel extends Box {
 		super("brick");
 		this.leftPosition = brickSetting.leftPosition;
 		this.topPosition = brickSetting.topPosition;
-		this.id = brickSetting.id;
+		this.id = shortid.generate();
 	}
 
 	collisionHow(ball){
