@@ -1,4 +1,8 @@
+.sizable {
+	display: flex;
+	border: 1px solid black;
+}
 .sizable > * {
-	width: 100%;
-	height: 100%;
+	flex: 1 1 auto;
+	margin: 5px;
 }
