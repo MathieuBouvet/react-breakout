@@ -11,18 +11,23 @@ class BrickModel extends Box {
 	}
 
 	collisionHow(ball){
+		const ajust = 10;
+		const above = (ball.topPosition < (this.topPosition + ajust));
+		const under = (ball.topPosition > (this.topPosition + this.height - ajust));
+		const left = (ball.leftPosition < (this.leftPosition + ajust));
+		const right = (ball.leftPosition > (this.leftPosition + this.width - ajust));
 
-		// Will hit horizontal border ?
-		if(ball.topPosition < this.topPosition || ball.topPosition > this.topPosition+this.height){
-			// will hit a corner ?
-			if(ball.leftPosition < this.leftPosition || ball.leftPosition > this.leftPosition+this.width){
-				// corner
-				return 45;
-			}
-			// horizontal
+		// top-left and bottom-right corner
+		if( (above && left) || (under && right)){
+			return 45;
+		}
+		// bottom-left and top-right corner
+		if((above && right) || (under && left)){
+			return 135;
+		}
+		if(above || under){
 			return 0;
 		}
-		// vertical
 		return 90;
 	}
 }
