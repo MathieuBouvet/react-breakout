@@ -11,7 +11,7 @@ class BrickModel extends Box {
 	}
 
 	collisionHow(ball){
-		const ajust = 10;
+		const ajust = 6;
 		const above = (ball.topPosition < (this.topPosition + ajust));
 		const under = (ball.topPosition > (this.topPosition + this.height - ajust));
 		const left = (ball.leftPosition < (this.leftPosition + ajust));
