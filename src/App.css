@@ -1,7 +1,7 @@
 :root {
 	--header-height: 75px;
 }
-html {
+* {
 	box-sizing: border-box;
 }
 .App {
