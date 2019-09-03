@@ -1,6 +1,5 @@
 .sizable {
 	display: flex;
-	border: 1px solid black;
 }
 .sizable > * {
 	flex: 1 1 auto;
