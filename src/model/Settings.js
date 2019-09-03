@@ -5,6 +5,10 @@ const settings = {
 				height: 625,
 				width: 1000,
 			},
+			free: {
+				topPosition: 0,
+				leftPosition: 0,
+			}
 		},
 		paddle: {
 			binded: {

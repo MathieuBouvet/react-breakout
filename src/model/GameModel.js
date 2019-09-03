@@ -3,13 +3,11 @@ import Paddle from './PaddleModel'
 import Ball from './BallModel'
 import Brick from './BrickModel'
 
-import ConfigurableEntity from './ConfigurableEntity'
+import Box from './Box'
 
-class GameModel extends ConfigurableEntity{
+class GameModel extends Box{
 	constructor(reduction){
 		super("board", reduction);
-		this.setting("width");
-		this.setting("height");
 		this.addBindedChild("paddle", new Paddle());
 		this.addBindedChild("ball", new Ball());
 		this.addBindedChild("brick", new Brick());
