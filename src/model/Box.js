@@ -21,6 +21,10 @@ class Box extends PositionableEntity {
 	collisionHow(position){
 		throw new Error(`method 'collisionHow' must be implemented in child class.`);
 	}
+
+	collide(ball){
+		throw new Error(`method 'collide' must be implemented in child class.`);
+	}
 }
 
 export default Box

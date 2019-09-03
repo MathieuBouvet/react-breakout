@@ -28,17 +28,40 @@ class GameModel extends Box{
 		this.paddle.leftPosition = position;
 	}
 
+	willCollide(position){
+		return (
+			position.left < 0 || position.left > this.width || position.top < 0
+		)
+	}
+
+	willLoose(position){
+		return position.top > this.height;
+	}
+
+	collisionHow(position){
+		if(position.left < 0){
+			return 270;
+		}
+		if(position.left > this.width){
+			return 90;
+		}
+		if(position.top < 0){
+			return 180;
+		}
+	}
+
+	collide(ball){
+		const nextPosition = ball.getNextPosition();
+		this.wallCollision(this.collisionHow(nextPosition));
+	}
+
 	run(){
 		const nextPosition = this.ball.getNextPosition();
-		if(nextPosition.left < 0){
-			this.wallCollision(90);
-		}else if(nextPosition.left > this.width){
-			this.wallCollision(270);
-		}else if(nextPosition.top < 0){
-			this.wallCollision(180);
+		if(this.willCollide(nextPosition)){
+			this.collide(this.ball);
 		}else if(this.paddle.willCollide(nextPosition)){
 			this.paddle.collide(this.ball);
-		}else if(nextPosition.top > this.height){
+		}else if(this.willLoose(nextPosition)){
 			
 		}else {
 			this.ball.moveToNextPosition();
