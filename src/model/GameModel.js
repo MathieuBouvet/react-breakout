@@ -56,9 +56,13 @@ class GameModel extends Box{
 	}
 
 	run(){
-		const nextColliding = this.getNextCollisioning();
+		const [nextColliding, index] = this.getNextCollisioning();
 		if(nextColliding !== null){
 			nextColliding.collide(this.ball);
+			if(nextColliding.markForRemove){
+				this.bricks.splice(index, 1);
+				this.breakNormal.play();
+			}
 		}else if(this.willLoose()){
 
 		}else {
@@ -71,17 +75,17 @@ class GameModel extends Box{
 	getNextCollisioning(){
 		const nextBallPosition = this.ball.getNextPosition()
 		if(this.willCollide(nextBallPosition)){
-			return this;
+			return [this, -1];
 		}
 		if(this.paddle.willCollide(nextBallPosition)){
-			return this.paddle;
+			return [this.paddle, -1];
 		}
 		for(let i=0 ; i<this.bricks.length ; i++){
 			if(this.bricks[i].willCollide(nextBallPosition)){
-				return this.bricks[i];
+				return [this.bricks[i], i];
 			}
 		}
-		return null;
+		return [null, null];
 	}
 
 	loadLevel(level){

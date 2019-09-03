@@ -5,6 +5,7 @@ class Box extends PositionableEntity {
 		super(templateName, coefficient);
 		this.setting("width");
 		this.setting("height");
+		this.markForRemove = false;
 	}
 
 	willCollide(position){

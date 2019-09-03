@@ -7,7 +7,7 @@ class BreakableBrick extends BrickModel {
 	}
 
 	takeHit(){
-		this.isNotDestroyed = (--this.life >= 0);
+		this.markForRemove = (--this.life <= 0);
 	}
 
 	collide(ball){
