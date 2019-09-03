@@ -1,7 +1,7 @@
 
 import Paddle from './PaddleModel'
 import Ball from './BallModel'
-import Brick from './BrickModel'
+import BrickFactory from './BrickFactory'
 
 import Settings from './Settings'
 
@@ -88,7 +88,7 @@ class GameModel extends Box{
 		const brickList = Settings.levels["level"+level].bricks;
 		for(let i=0 ; i<brickList.length ; i++){
 
-			this.bricks.push(new Brick(brickList[i]))
+			this.bricks.push(BrickFactory.create(brickList[i]))
 		}
 	}
 
