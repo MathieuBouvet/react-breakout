@@ -9,6 +9,11 @@ class BreakableBrick extends BrickModel {
 	takeHit(){
 		this.isNotDestroyed = (--this.life >= 0);
 	}
+
+	collide(ball){
+		super.collide(ball);
+		this.takeHit();
+	}
 }
 
 export default BreakableBrick
