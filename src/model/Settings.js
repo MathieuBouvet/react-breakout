@@ -21,20 +21,20 @@ const settings = {
 		ball: {
 			binded: {
 				velocity: 15,
-				topPosition: 500,
-				leftPosition: 800,
+				topPosition: 550,
+				leftPosition: 550,
 				size: 15,
 			},
 			free: {
-				angle: 60,
+				angle: 135,
 			}
 		},
 		brick: {
 			binded: {
 				leftPosition: 0,
 				topPosition: 0,
-				height: 25,
-				width: 25,
+				height: 200,
+				width: 200,
 			}
 		}
 	}
