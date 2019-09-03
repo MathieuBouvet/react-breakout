@@ -17,6 +17,10 @@ class Box extends PositionableEntity {
 			    && position.top >= topBorder 
 			    && position.top <= bottomBorder);
 	}
+
+	collisionHow(position){
+		throw new Error(`method 'collisionHow' must be implemented in child class.`);
+	}
 }
 
 export default Box
