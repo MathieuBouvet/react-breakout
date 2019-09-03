@@ -12,8 +12,8 @@ const settings = {
 		},
 		paddle: {
 			binded: {
-				height: 15,
-				width: 150,
+				height: 25,
+				width: 160,
 				topPosition: 610,
 				leftPosition: 0,
 			},
