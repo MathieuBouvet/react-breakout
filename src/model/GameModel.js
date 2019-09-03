@@ -34,7 +34,8 @@ class GameModel extends Box{
 		)
 	}
 
-	willLoose(position){
+	willLoose(){
+		const position = this.ball.getNextPosition();
 		return position.top > this.height;
 	}
 
@@ -53,16 +54,30 @@ class GameModel extends Box{
 	}
 
 	run(){
-		const nextPosition = this.ball.getNextPosition();
-		if(this.willCollide(nextPosition)){
-			this.collide(this.ball);
-		}else if(this.paddle.willCollide(nextPosition)){
-			this.paddle.collide(this.ball);
-		}else if(this.willLoose(nextPosition)){
-			
+		const nextColliding = this.getNextCollisioning();
+		if(nextColliding !== null){
+			nextColliding.collide(this.ball);
+		}else if(this.willLoose()){
+
 		}else {
 			this.ball.moveToNextPosition();
 		}
+	}
+
+	// return the next object to collide with the ball, or null if nothing collide
+	// WIP : It must be completely dynamic, ie loop through all Box objects...
+	getNextCollisioning(){
+		const nextBallPosition = this.ball.getNextPosition()
+		if(this.willCollide(nextBallPosition)){
+			return this;
+		}
+		if(this.paddle.willCollide(nextBallPosition)){
+			return this.paddle;
+		}
+		if(this.brick.willCollide(nextBallPosition)){
+			return this.brick;
+		}
+		return null;
 	}
 
 }
