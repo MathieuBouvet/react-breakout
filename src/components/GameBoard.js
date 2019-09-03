@@ -44,6 +44,7 @@ class GameBoard extends Component {
 						left={brick.leftPosition}
 						width={brick.width}
 						height={brick.height}
+						display={!brick.markForRemove}
 					/>
 				)) }
 				

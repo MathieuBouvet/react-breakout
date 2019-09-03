@@ -9,6 +9,9 @@ class Box extends PositionableEntity {
 	}
 
 	willCollide(position){
+		if(this.markForRemove){
+			return false;
+		}
 		const leftBorder = this.leftPosition;
 		const rightBorder = leftBorder + this.width;
 		const topBorder = this.topPosition;

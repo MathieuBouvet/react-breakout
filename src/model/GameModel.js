@@ -61,10 +61,10 @@ class GameModel extends Box{
 		const nextColliding = this.getNextCollisioning();
 		if(nextColliding !== null){
 			nextColliding.collide(this.ball);
-			if(nextColliding.markForRemove){
-				this.bricks.splice(this.bricks.indexOf(nextColliding), 1);
-				this.breakNormal.play();
-			}
+			// if(nextColliding.markForRemove){
+			// 	this.bricks.splice(this.bricks.indexOf(nextColliding), 1);
+			// 	this.breakNormal.play();
+			// }
 		}else if(this.willLoose()){
 
 		}else {
