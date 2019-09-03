@@ -26,7 +26,7 @@ const settings = {
 		ball: {
 			binded: {
 				velocity: 15,
-				topPosition: 370,
+				topPosition: 360,
 				leftPosition: 550,
 				size: 15,
 			},
@@ -38,8 +38,8 @@ const settings = {
 			binded: {
 				leftPosition: 0,
 				topPosition: 0,
-				height: 35,
-				width: 55,
+				height: 45,
+				width: 66,
 			}
 		}
 	},
