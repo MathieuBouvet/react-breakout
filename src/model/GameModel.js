@@ -15,6 +15,8 @@ class GameModel extends Box{
 		//this.addBindedChild("brick", new Brick());
 		this.bricks = [];
 		this.loadLevel(1);
+
+		this.breakNormal = new Audio('4131.mp3');
 	}
 
 	updatePaddlePosition(position){
