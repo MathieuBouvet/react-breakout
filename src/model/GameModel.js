@@ -41,8 +41,7 @@ class GameModel extends ConfigurableEntity{
 		}else if(this.paddle.willCollide(nextPosition)){
 			this.paddle.collide(this.ball);
 		}else if(nextPosition.top > this.height){
-			alert("PERDU :(");
-			this.ball.moveTo(90);
+			
 		}else {
 			this.ball.moveToNextPosition();
 		}
