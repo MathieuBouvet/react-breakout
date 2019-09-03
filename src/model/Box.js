@@ -26,8 +26,8 @@ class Box extends PositionableEntity {
 		const nextPosition = ball.getNextPosition();
 		const how = this.collisionHow(nextPosition);
 		
-		const incidence = (how - this.ball.angle);
-		this.ball.moveTo(this.ball.angle + 2*incidence);
+		const incidence = (how - ball.angle);
+		ball.moveTo(ball.angle + 2*incidence);
 	}
 }
 
