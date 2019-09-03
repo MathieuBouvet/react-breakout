@@ -8,6 +8,7 @@ class BrickModel extends Box {
 		this.leftPosition = brickSetting.leftPosition;
 		this.topPosition = brickSetting.topPosition;
 		this.id = shortid.generate();
+		this.isNotDestroyed = true;
 	}
 
 	collisionHow(ball){
