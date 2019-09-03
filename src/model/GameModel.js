@@ -36,7 +36,7 @@ class GameModel extends Box{
 
 	willLoose(){
 		const position = this.ball.getNextPosition();
-		return position.top > this.height;
+		return position.top > this.height + 20;
 	}
 
 	// return the angle of the perpendicular of wall collisioning
