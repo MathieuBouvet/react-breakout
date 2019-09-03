@@ -1,10 +1,11 @@
 import Box from './Box'
 
 class BrickModel extends Box {
-	constructor(){
+	constructor(brickSetting){
 		super("brick");
-		this.leftPosition = 200;
-		this.topPosition = 200;
+		this.leftPosition = brickSetting.leftPosition;
+		this.topPosition = brickSetting.topPosition;
+		this.id = brickSetting.id;
 	}
 
 	collisionHow(ball){

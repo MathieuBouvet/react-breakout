@@ -3,6 +3,8 @@ import Paddle from './PaddleModel'
 import Ball from './BallModel'
 import Brick from './BrickModel'
 
+import Settings from './Settings'
+
 import Box from './Box'
 
 class GameModel extends Box{
@@ -10,7 +12,9 @@ class GameModel extends Box{
 		super("board", reduction);
 		this.addBindedChild("paddle", new Paddle());
 		this.addBindedChild("ball", new Ball());
-		this.addBindedChild("brick", new Brick());
+		//this.addBindedChild("brick", new Brick());
+		this.bricks = [];
+		this.loadLevel(1);
 	}
 
 	updatePaddlePosition(position){
@@ -72,10 +76,20 @@ class GameModel extends Box{
 		if(this.paddle.willCollide(nextBallPosition)){
 			return this.paddle;
 		}
-		if(this.brick.willCollide(nextBallPosition)){
-			return this.brick;
+		for(let i=0 ; i<this.bricks.length ; i++){
+			if(this.bricks[i].willCollide(nextBallPosition)){
+				return this.bricks[i];
+			}
 		}
 		return null;
+	}
+
+	loadLevel(level){
+		const brickList = Settings.levels["level"+level].bricks;
+		for(let i=0 ; i<brickList.length ; i++){
+
+			this.bricks.push(new Brick(brickList[i]))
+		}
 	}
 
 }

@@ -37,12 +37,16 @@ class GameBoard extends Component {
 					left={ballLeftPosition}
 					size={this.gameModel.ball.size}
 				/>
-				<Brick 
-					top={this.gameModel.brick.topPosition}
-					left={this.gameModel.brick.leftPosition}
-					width={this.gameModel.brick.width}
-					height={this.gameModel.brick.height}
-				/>
+				{ this.gameModel.bricks.map((brick) => (
+					<Brick 
+						key={brick.id}
+						top={brick.topPosition}
+						left={brick.leftPosition}
+						width={brick.width}
+						height={brick.height}
+					/>
+				)) }
+				
 			</div>
 		)
 	}

@@ -1,3 +1,8 @@
+export const BrickTypes = {
+	NORMAL: 0,
+	RESISTANT: 1,
+	UNBREAKABLE: 2,
+}
 const settings = {
 	templates: {
 		board: {
@@ -33,11 +38,34 @@ const settings = {
 			binded: {
 				leftPosition: 0,
 				topPosition: 0,
-				height: 200,
-				width: 200,
+				height: 35,
+				width: 55,
 			}
+		}
+	},
+	levels: {
+		level1:{
+			bricks: [
+				{
+					id: "1",
+					type: BrickTypes.NORMAL,
+					topPosition: 50,
+					leftPosition: 50,
+				},
+				{
+					id: "2",
+					type: BrickTypes.NORMAL,
+					topPosition: 150,
+					leftPosition: 150,
+				},
+				{
+					id: "3",
+					type: BrickTypes.NORMAL,
+					topPosition: 150,
+					leftPosition: 50,
+				},
+			]
 		}
 	}
 }
-
 export default settings
