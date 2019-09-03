@@ -41,7 +41,8 @@ class GameModel extends Box{
 
 	// return the angle of the perpendicular of wall collisioning
 	// 180 for top wall, 90 for right or left
-	collisionHow(position){
+	collisionHow(ball){
+		const position = ball.getNextPosition();
 		if(position.left < 0 || position.left > this.width){
 			return 90;
 		}

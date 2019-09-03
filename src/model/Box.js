@@ -18,13 +18,13 @@ class Box extends PositionableEntity {
 			    && position.top <= bottomBorder);
 	}
 
-	collisionHow(position){
+	collisionHow(ball){
 		throw new Error(`method 'collisionHow' must be implemented in child class.`);
 	}
 
 	collide(ball){
-		const nextPosition = ball.getNextPosition();
-		const how = this.collisionHow(nextPosition);
+		//const nextPosition = ball.getNextPosition();
+		const how = this.collisionHow(ball);
 		
 		const incidence = (how - ball.angle);
 		ball.moveTo(ball.angle + 2*incidence);
