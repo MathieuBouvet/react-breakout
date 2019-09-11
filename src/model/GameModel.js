@@ -14,6 +14,8 @@ class GameModel extends Box{
 		this.addBindedChild("ball", new Ball(this));
 		//this.addBindedChild("brick", new Brick());
 		this.bricks = [];
+		this.level = 0;
+		
 		this.loadLevel(1);
 		this.paused = false;
 
@@ -97,6 +99,7 @@ class GameModel extends Box{
 			newBrick.updateBindValue(this.bindValue);
 			this.bricks.push(newBrick);
 		}
+		this.level = level;
 	}
 
 	updateBindValue(newBindValue){

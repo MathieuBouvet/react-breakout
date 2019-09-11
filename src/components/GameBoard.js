@@ -46,7 +46,11 @@ class GameBoard extends Component {
 						clickHandler={this.handleClick}
 					/>
 				</div>
-				<SidePanel gamePaused={this.gameModel.paused} pauseHandler={this.handlePauseClick}/>
+				<SidePanel
+					gamePaused={this.gameModel.paused}
+					level={this.gameModel.level}
+					pauseHandler={this.handlePauseClick}
+				/>
 			</section>
 		);
 	}
