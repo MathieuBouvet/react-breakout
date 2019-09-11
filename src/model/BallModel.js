@@ -50,6 +50,18 @@ class BallModel extends PositionableEntity {
 		this.setAngle(angle);
 		this.moveToNextPosition();
 	}
+
+	unstick(){
+		this.stickedToPaddle = false;
+	}
+
+	stick(){
+		this.stickedToPaddle = true;
+	}
+
+	toggleStick(){
+		this.stickedToPaddle = !this.stickedToPaddle;
+	}
 }
 
 export default BallModel

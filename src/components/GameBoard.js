@@ -27,7 +27,7 @@ class GameBoard extends Component {
 		const { paddlePosition, ballTopPosition, ballLeftPosition } = this.state;
 		return (
 			<div className="gameBoard" style={{width: this.gameModel.width+"px", height: this.gameModel.height+"px"}}>
-				<div className="mouseMoveOverlay" onMouseMove={this.handleMouseMove}></div>
+				<div className="mouseMoveOverlay" onMouseMove={this.handleMouseMove} onClick={this.handleClick}></div>
 				<Paddle 
 					top={this.gameModel.paddle.topPosition}
 					left={paddlePosition}
@@ -87,6 +87,10 @@ class GameBoard extends Component {
 				ballLeftPosition: this.gameModel.ball.leftPosition,
 			});
 		}
+	}
+
+	handleClick = (event) => {
+		this.gameModel.ball.unstick();
 	}
 
 }
