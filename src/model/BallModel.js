@@ -15,9 +15,16 @@ class BallModel extends PositionableEntity {
 	}
 
 	getNextPosition(){
+		if(!this.stickedToPaddle){
+			return {
+				left: this.leftPosition + (this.velocity * Math.cos(r(this.angle))),
+				top: this.topPosition + (this.velocity * Math.sin(r(-this.angle))),
+			}
+		}
+		const paddle = this.gameModel.paddle;
 		return {
-			left: this.leftPosition + (this.velocity * Math.cos(r(this.angle))),
-			top: this.topPosition + (this.velocity * Math.sin(r(-this.angle))),
+			left: paddle.leftPosition + paddle.width/2,
+			top: paddle.topPosition,
 		}
 	}
 	setNextPosition(nextPositionObject){
