@@ -11,7 +11,7 @@ class GameModel extends Box{
 	constructor(reduction){
 		super("board", reduction);
 		this.addBindedChild("paddle", new Paddle());
-		this.addBindedChild("ball", new Ball());
+		this.addBindedChild("ball", new Ball(this));
 		//this.addBindedChild("brick", new Brick());
 		this.bricks = [];
 		this.loadLevel(1);

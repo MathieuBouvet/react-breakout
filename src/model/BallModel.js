@@ -5,11 +5,12 @@ function r(angle){
 }
 
 class BallModel extends PositionableEntity {
-	constructor(coefficient){
+	constructor(gameModel, coefficient){
 		super("ball", coefficient);
 		this.setting("angle");
 		this.setting("velocity");
 		this.setting("size");
+		this.gameModel = gameModel;
 	}
 
 	getNextPosition(){
