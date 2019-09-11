@@ -64,6 +64,9 @@ class GameModel extends Box{
 	run(){
 		// no need to check for collision if ball is sticked to paddle, or if the game is paused
 		if(!this.ball.stickedToPaddle && !this.paused){
+			if(this.bricksNumber <= 0){
+				this.togglePause();
+			}
 			const nextColliding = this.getNextCollisioning();
 			if(nextColliding !== null){
 				nextColliding.collide(this.ball);
