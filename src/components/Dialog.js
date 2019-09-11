@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import './Dialog.css'
 
-const Dialog = ({title, children}) => (
+const Dialog = ({title, dialogAction, children}) => (
 	<div className="dialog-overlay">
 		<div className="dialog">
 			<div className="dialog-header">{ title }</div>
-			<div className="dialog-body">
+			<div className="dialog-body" onClick={() => dialogAction()}>
 				{ children }
 			</div>
 		</div>
@@ -16,6 +16,7 @@ const Dialog = ({title, children}) => (
 
 Dialog.propTypes = {
 	title: PropTypes.string.isRequired,
+	dialogAction: PropTypes.func,
 }
 
 export default Dialog
