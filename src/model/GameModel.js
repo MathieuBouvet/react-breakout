@@ -3,7 +3,7 @@ import Paddle from './PaddleModel'
 import Ball from './BallModel'
 import BrickFactory from './BrickFactory'
 
-import Settings from './Settings'
+import Settings, { BrickTypes } from './Settings'
 
 import Box from './Box'
 
@@ -15,7 +15,8 @@ class GameModel extends Box{
 		//this.addBindedChild("brick", new Brick());
 		this.bricks = [];
 		this.level = 0;
-		
+		this.bricksNumber = 0;
+
 		this.loadLevel(1);
 		this.paused = false;
 
@@ -100,6 +101,12 @@ class GameModel extends Box{
 			this.bricks.push(newBrick);
 		}
 		this.level = level;
+		this.bricksNumber = this.bricks.reduce((acc, brick) => {
+			if(brick.type === BrickTypes.UNBREAKABLE){
+				return acc;
+			}
+			return ++acc;
+		}, 0)
 	}
 
 	updateBindValue(newBindValue){
