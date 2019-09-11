@@ -13,6 +13,9 @@ class BreakableBrick extends BrickModel {
 	collide(ball){
 		super.collide(ball);
 		this.takeHit();
+		if(this.markForRemove){
+			this.gameModel.bricksNumber--;
+		}
 	}
 }
 

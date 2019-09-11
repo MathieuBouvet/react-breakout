@@ -9,6 +9,7 @@ class BrickModel extends Box {
 		this.topPosition = brickSetting.topPosition;
 		this.id = shortid.generate();
 		this.type = brickSetting.type;
+		this.gameModel = null;
 	}
 
 	collisionHow(ball){
@@ -30,6 +31,10 @@ class BrickModel extends Box {
 			return 0;
 		}
 		return 90;
+	}
+
+	setModelReference(modelRef){
+		this.gameModel = modelRef;
 	}
 }
 

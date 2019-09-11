@@ -98,6 +98,7 @@ class GameModel extends Box{
 		for(let i=0 ; i<brickList.length ; i++){
 			let newBrick = BrickFactory.create(brickList[i]);
 			newBrick.updateBindValue(this.bindValue);
+			newBrick.setModelReference(this);
 			this.bricks.push(newBrick);
 		}
 		this.level = level;
@@ -118,6 +119,8 @@ class GameModel extends Box{
 
 	togglePause(){
 		this.paused = !this.paused;
+		console.log(this.bricksNumber);
+
 	}
 
 }
