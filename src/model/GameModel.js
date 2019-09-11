@@ -15,6 +15,7 @@ class GameModel extends Box{
 		//this.addBindedChild("brick", new Brick());
 		this.bricks = [];
 		this.loadLevel(1);
+		this.paused = false;
 
 		this.breakNormal = new Audio('4131.mp3');
 	}
@@ -58,8 +59,8 @@ class GameModel extends Box{
 	}
 
 	run(){
-		// no need to check for collision if ball is sticked to paddle
-		if(!this.ball.stickedToPaddle){
+		// no need to check for collision if ball is sticked to paddle, or if the game is paused
+		if(!this.ball.stickedToPaddle && !this.paused){
 			const nextColliding = this.getNextCollisioning();
 			if(nextColliding !== null){
 				nextColliding.collide(this.ball);
@@ -103,6 +104,10 @@ class GameModel extends Box{
 		for(let i=0 ; i<this.bricks.length ; i++){
 			this.bricks[i].updateBindValue(newBindValue);
 		}
+	}
+
+	togglePause(){
+		this.paused = !this.paused;
 	}
 
 }

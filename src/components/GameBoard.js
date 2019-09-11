@@ -5,6 +5,7 @@ import './GameBoard.css'
 import Paddle from './Paddle'
 import Ball from './Ball'
 import Brick from './Brick'
+import SidePanel from './SidePanel'
 
 import GameModel from '../model/GameModel'
 
@@ -59,9 +60,7 @@ class GameBoard extends Component {
 				<div className="game-container">
 					{gameBoard}
 				</div>
-				<aside className="side-panel-container">
-
-				</aside>
+				<SidePanel gamePaused={this.gameModel.paused} pauseHandler={this.handlePauseClick}/>
 			</section>
 		);
 	}
@@ -83,7 +82,9 @@ class GameBoard extends Component {
 	// So we need this trick with two functions
 	handleMouseMove = (event) => {
 		// we send the value, not the event, that's the trick
-		this.throttledMouseMoveHandler(event.nativeEvent.offsetX);
+		if(!this.gameModel.paused){
+			this.throttledMouseMoveHandler(event.nativeEvent.offsetX);
+		}
 	}
 	throttledMouseMoveHandler(position){
 		this.gameModel.updatePaddlePosition(position);
@@ -101,6 +102,10 @@ class GameBoard extends Component {
 
 	handleClick = (event) => {
 		this.gameModel.ball.unstick();
+	}
+
+	handlePauseClick = () => {
+		this.gameModel.togglePause();
 	}
 
 }
