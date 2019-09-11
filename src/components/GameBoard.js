@@ -80,6 +80,13 @@ class GameBoard extends Component {
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
 		});
+		if(this.gameModel.ball.stickedToPaddle){
+			this.gameModel.ball.moveToNextPosition();
+			this.setState({
+				ballTopPosition: this.gameModel.ball.topPosition,
+				ballLeftPosition: this.gameModel.ball.leftPosition,
+			});
+		}
 	}
 
 }
