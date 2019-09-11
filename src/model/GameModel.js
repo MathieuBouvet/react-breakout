@@ -58,13 +58,16 @@ class GameModel extends Box{
 	}
 
 	run(){
-		const nextColliding = this.getNextCollisioning();
-		if(nextColliding !== null){
-			nextColliding.collide(this.ball);
-		}else if(this.willLoose()){
+		// no need to check for collision if ball is sticked to paddle
+		if(!this.ball.stickedToPaddle){
+			const nextColliding = this.getNextCollisioning();
+			if(nextColliding !== null){
+				nextColliding.collide(this.ball);
+			}else if(this.willLoose()){
 
-		}else {
-			this.ball.moveToNextPosition();
+			}else {
+				this.ball.moveToNextPosition();
+			}
 		}
 	}
 
