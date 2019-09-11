@@ -6,7 +6,7 @@ import Sizable from './Sizable'
 
 import './Brick.css'
 
-const Brick = ({top, left, height, width, display}) => (
+const Brick = ({top, left, height, width, display, type, life}) => (
 	<Positionable top={top} left={left}>
 		<Sizable width={width} height={height}>
 			<div className={`brick ${!display ? 'hide' : ''}`}></div>
@@ -20,6 +20,8 @@ Brick.propTypes = {
 	width: PropTypes.number.isRequired,
 	height: PropTypes.number.isRequired,
 	display: PropTypes.bool.isRequired,
+	type: PropTypes.number.isRequired,
+	life: PropTypes.number.isRequired,
 }
 
 export default Brick

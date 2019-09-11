@@ -8,6 +8,8 @@ import Brick from './Brick'
 
 import GameModel from '../model/GameModel'
 
+import { BrickTypes } from '../model/Settings'
+
 class GameBoard extends Component {
 	constructor(props) {
 		super(props);
@@ -45,6 +47,8 @@ class GameBoard extends Component {
 						width={brick.width}
 						height={brick.height}
 						display={!brick.markForRemove}
+						type={brick.type}
+						life={brick.type===BrickTypes.UNBREAKABLE ? -1 : brick.life}
 					/>
 				)) }
 				
