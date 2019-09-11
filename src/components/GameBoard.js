@@ -4,6 +4,7 @@ import './GameBoard.css'
 
 import GamingArea from './GamingArea'
 import SidePanel from './SidePanel'
+import Dialog from './Dialog'
 
 import GameModel from '../model/GameModel'
 
@@ -51,6 +52,9 @@ class GameBoard extends Component {
 					level={this.gameModel.level}
 					pauseHandler={this.handlePauseClick}
 				/>
+				{
+					this.gameModel.bricksNumber <= 0 && <Dialog />
+				}
 			</section>
 		);
 	}
