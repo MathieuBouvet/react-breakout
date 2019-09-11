@@ -4,7 +4,7 @@ import './GameBoard.css'
 
 import GamingArea from './GamingArea'
 import SidePanel from './SidePanel'
-import Dialog from './Dialog'
+import NextLevelDialog from './NextLevelDialog'
 
 import GameModel from '../model/GameModel'
 
@@ -53,7 +53,7 @@ class GameBoard extends Component {
 					pauseHandler={this.handlePauseClick}
 				/>
 				{
-					this.gameModel.bricksNumber <= 0 && <Dialog />
+					this.gameModel.bricksNumber <= 0 && <NextLevelDialog title="Gagné" />
 				}
 			</section>
 		);
