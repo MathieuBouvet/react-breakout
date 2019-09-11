@@ -93,8 +93,16 @@ class GameModel extends Box{
 	loadLevel(level){
 		const brickList = Settings.levels["level"+level].bricks;
 		for(let i=0 ; i<brickList.length ; i++){
+			let newBrick = BrickFactory.create(brickList[i]);
+			newBrick.updateBindValue(this.bindValue);
+			this.bricks.push(newBrick);
+		}
+	}
 
-			this.bricks.push(BrickFactory.create(brickList[i]))
+	updateBindValue(newBindValue){
+		super.updateBindValue(newBindValue);
+		for(let i=0 ; i<this.bricks.length ; i++){
+			this.bricks[i].updateBindValue(newBindValue);
 		}
 	}
 
