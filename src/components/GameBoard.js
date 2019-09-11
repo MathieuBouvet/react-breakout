@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 import throttle from 'lodash.throttle'
 import './GameBoard.css'
 
-import Paddle from './Paddle'
-import Ball from './Ball'
-import Brick from './Brick'
+import GamingArea from './GamingArea'
 import SidePanel from './SidePanel'
 
 import GameModel from '../model/GameModel'
-
-import { BrickTypes } from '../model/Settings'
 
 class GameBoard extends Component {
 	constructor(props) {
@@ -26,39 +22,29 @@ class GameBoard extends Component {
 
 	render(){
 		const { paddlePosition, ballTopPosition, ballLeftPosition } = this.state;
-		const gameBoard = (
-			<div className="gameBoard" style={{width: this.gameModel.width+"px", height: this.gameModel.height+"px"}}>
-				<div className="mouseMoveOverlay" onMouseMove={this.handleMouseMove} onClick={this.handleClick}></div>
-				<Paddle 
-					top={this.gameModel.paddle.topPosition}
-					left={paddlePosition}
-					width={this.gameModel.paddle.width}
-					height={this.gameModel.paddle.height}
-				/>
-				<Ball
-					top={ballTopPosition}
-					left={ballLeftPosition}
-					size={this.gameModel.ball.size}
-				/>
-				{ this.gameModel.bricks.map((brick) => (
-					<Brick 
-						key={brick.id}
-						top={brick.topPosition}
-						left={brick.leftPosition}
-						width={brick.width}
-						height={brick.height}
-						display={!brick.markForRemove}
-						type={brick.type}
-						life={brick.type===BrickTypes.UNBREAKABLE ? -1 : brick.life}
-					/>
-				)) }
-				
-			</div>
-		);
 		return (
 			<section className="App-body">
 				<div className="game-container">
-					{gameBoard}
+					<GamingArea 
+						gameModelSize={{
+							width: this.gameModel.width,
+							height: this.gameModel.height,
+						}}
+						paddle={{
+							top: this.gameModel.paddle.topPosition,
+							left: paddlePosition,
+							width: this.gameModel.paddle.width,
+							height: this.gameModel.paddle.height,
+						}}
+						ball={{
+							top: ballTopPosition,
+							left: ballLeftPosition,
+							size: this.gameModel.ball.size,
+						}}
+						bricks={this.gameModel.bricks}
+						mouseMoveHandler={this.handleMouseMove}
+						clickHandler={this.handleClick}
+					/>
 				</div>
 				<SidePanel gamePaused={this.gameModel.paused} pauseHandler={this.handlePauseClick}/>
 			</section>
