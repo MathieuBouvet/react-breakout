@@ -47,7 +47,7 @@ const settings = {
 		level1:{
 			bricks: [
 				{
-					type: BrickTypes.NORMAL,
+					type: BrickTypes.UNBREAKABLE,
 					topPosition: 50,
 					leftPosition: 50,
 				},
@@ -57,7 +57,7 @@ const settings = {
 					leftPosition: 150,
 				},
 				{
-					type: BrickTypes.NORMAL,
+					type: BrickTypes.RESISTANT,
 					topPosition: 150,
 					leftPosition: 50,
 				},
