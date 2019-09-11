@@ -31,7 +31,7 @@ const settings = {
 				size: 15,
 			},
 			free: {
-				angle: 60,
+				angle: 90,
 				stickedToPaddle: true,
 			}
 		},
