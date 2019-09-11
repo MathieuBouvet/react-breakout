@@ -11,12 +11,14 @@
 	z-index: 15000;
 }
 
-.dialog-overlay > * {
-	opacity: 1;
-}
-
 .dialog {
-	width: 500px;
-	height: 500px;
+	width: 33vw;
+	height: 33vh;
 	background-color: white;
+	border-radius: 5px;
+}
+.dialog-header {
+	font-size: 2em;
+	padding: 15px;
+	border-bottom: 1px grey solid;
 }

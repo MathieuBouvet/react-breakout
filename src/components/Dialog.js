@@ -3,16 +3,19 @@ import PropTypes from 'prop-types'
 
 import './Dialog.css'
 
-const Dialog = (props) => (
+const Dialog = ({title, children}) => (
 	<div className="dialog-overlay">
 		<div className="dialog">
-			test
+			<div className="dialog-header">{ title }</div>
+			<div className="dialog-body">
+				{ children }
+			</div>
 		</div>
 	</div>
 )
 
 Dialog.propTypes = {
-
+	title: PropTypes.string.isRequired,
 }
 
 export default Dialog
