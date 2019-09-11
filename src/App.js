@@ -9,12 +9,8 @@ function App() {
 			<header className="App-header">
 				React Breakout
 			</header>
-			<section className="App-body">
-				<div className="game-container">
-					<GameBoard />
-				</div>
-				<aside className="side-panel-container"></aside>
-			</section>
+			
+			<GameBoard />
 		</div>
 	);
 }

@@ -25,7 +25,7 @@ class GameBoard extends Component {
 
 	render(){
 		const { paddlePosition, ballTopPosition, ballLeftPosition } = this.state;
-		return (
+		const gameBoard = (
 			<div className="gameBoard" style={{width: this.gameModel.width+"px", height: this.gameModel.height+"px"}}>
 				<div className="mouseMoveOverlay" onMouseMove={this.handleMouseMove} onClick={this.handleClick}></div>
 				<Paddle 
@@ -53,7 +53,17 @@ class GameBoard extends Component {
 				)) }
 				
 			</div>
-		)
+		);
+		return (
+			<section className="App-body">
+				<div className="game-container">
+					{gameBoard}
+				</div>
+				<aside className="side-panel-container">
+
+				</aside>
+			</section>
+		);
 	}
 
 	componentDidMount(){

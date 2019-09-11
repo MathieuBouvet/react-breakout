@@ -19,23 +19,6 @@
 	color: white;
 }
 
-.App-body {
-	background-color: #282c34;
-	height: calc(100vh - var(--header-height) );
-	display: flex;
-	flex-direction: row;
-	align-items: stretch;
-}
-.game-container {
-	flex: 1 1 auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.side-panel-container {
-	flex: 0 1 200px;
-	background-color: gray;
-}
 
 .App-link {
 	color: #61dafb;
