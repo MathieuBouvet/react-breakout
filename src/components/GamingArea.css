@@ -1,0 +1,13 @@
+.gameBoard {
+	border: solid 1px black;
+	position: relative;
+	cursor: none;
+}
+
+.mouseMoveOverlay {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+	z-index: 1000;
+}
