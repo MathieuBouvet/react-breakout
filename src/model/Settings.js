@@ -32,6 +32,7 @@ const settings = {
 			},
 			free: {
 				angle: 60,
+				stickedToPaddle: true,
 			}
 		},
 		brick: {

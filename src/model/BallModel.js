@@ -10,6 +10,7 @@ class BallModel extends PositionableEntity {
 		this.setting("angle");
 		this.setting("velocity");
 		this.setting("size");
+		this.setting("stickedToPaddle");
 		this.gameModel = gameModel;
 	}
 
