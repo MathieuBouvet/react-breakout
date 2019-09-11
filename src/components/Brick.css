@@ -8,3 +8,19 @@
 .brick.hide {
 	opacity: 0;
 }
+
+.brick.unbreakable {
+	background-color: grey;
+}
+
+.brick.resistant2 {
+	background-color: orange;
+}
+
+.brick.resistant1 {
+	background-color: yellow;
+}
+
+.brick.resistant0 {
+	background-color: yellow;
+}

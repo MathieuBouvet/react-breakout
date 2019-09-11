@@ -4,12 +4,28 @@ import PropTypes from 'prop-types'
 import Positionable from './Positionable'
 import Sizable from './Sizable'
 
+import { BrickTypes } from '../model/Settings'
+
 import './Brick.css'
+
+function generateClassName(display, type, life){
+	let base = "brick";
+	if(!display){
+		base += " hide";
+	}
+	if(type === BrickTypes.RESISTANT){
+		return `${base} resistant${life}`;
+	}
+	if(type === BrickTypes.UNBREAKABLE){
+		return `${base} unbreakable`;
+	}
+	return base;
+}
 
 const Brick = ({top, left, height, width, display, type, life}) => (
 	<Positionable top={top} left={left}>
 		<Sizable width={width} height={height}>
-			<div className={`brick ${!display ? 'hide' : ''}`}></div>
+			<div className={generateClassName(display, type, life)}></div>
 		</Sizable>
 	</Positionable>
 )
