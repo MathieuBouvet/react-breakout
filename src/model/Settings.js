@@ -57,16 +57,6 @@ const settings = {
 					topPosition: 150,
 					leftPosition: 150,
 				},
-				{
-					type: BrickTypes.RESISTANT,
-					topPosition: 150,
-					leftPosition: 50,
-				},
-				{
-					type: BrickTypes.NORMAL,
-					topPosition: 150,
-					leftPosition: 650,
-				},
 			]
 		}
 	}
