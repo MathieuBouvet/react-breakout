@@ -103,7 +103,12 @@ class GameBoard extends Component {
 	}
 
 	handleNextLevelClick = () => {
-		console.log("next level");
+		this.gameModel.playNextLevel();
+		this.setState({
+			paddlePosition: this.gameModel.paddle.leftPosition,
+			ballLeftPosition: this.gameModel.ball.leftPosition,
+			ballTopPosition: this.gameModel.ball.topPosition,
+		});
 	}
 
 }
