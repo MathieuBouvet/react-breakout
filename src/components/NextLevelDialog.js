@@ -7,8 +7,8 @@ import './NextLevelDialog.css'
 
 import Dialog from './Dialog'
 
-const NextLevelDialog = (props) => (
-	<Dialog title="Gagné !">
+const NextLevelDialog = ({nextLevelAction}) => (
+	<Dialog title="Gagné !" dialogAction={nextLevelAction}>
 		<IconContext.Provider value={{ className: "next-level-icon" }}>
 			<FaArrowCircleRight />
 		</IconContext.Provider>
@@ -17,7 +17,7 @@ const NextLevelDialog = (props) => (
 )
 
 NextLevelDialog.propTypes = {
-
+	nextLevelAction: PropTypes.func.isRequired,
 }
 
 export default NextLevelDialog

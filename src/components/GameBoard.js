@@ -53,7 +53,7 @@ class GameBoard extends Component {
 					pauseHandler={this.handlePauseClick}
 				/>
 				{
-					this.gameModel.bricksNumber <= 0 && <NextLevelDialog title="Gagné" />
+					this.gameModel.bricksNumber <= 0 && <NextLevelDialog nextLevelAction={this.handleNextLevelClick}/>
 				}
 			</section>
 		);
@@ -100,6 +100,10 @@ class GameBoard extends Component {
 
 	handlePauseClick = () => {
 		this.gameModel.togglePause();
+	}
+
+	handleNextLevelClick = () => {
+		console.log("next level");
 	}
 
 }
