@@ -58,6 +58,20 @@ const settings = {
 					leftPosition: 150,
 				},
 			]
+		},
+		level2: {
+			bricks: [
+				{
+					type: BrickTypes.NORMAL,
+					topPosition: 150,
+					leftPosition: 150,
+				},
+				{
+					type: BrickTypes.RESISTANT,
+					topPosition: 150,
+					leftPosition: 250,
+				},
+			],
 		}
 	}
 }
