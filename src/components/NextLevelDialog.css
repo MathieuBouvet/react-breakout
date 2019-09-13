@@ -1,0 +1,15 @@
+.next-level-icon {
+	flex: 1 1 auto;
+	width: 100%;
+	color: darkgreen;
+	transition: color 250ms;
+}
+.next-level-icon:hover {
+	color: green;
+}
+
+.next-level-label {
+	flex: 0 0 auto;
+	margin: 5px;
+	font-size: 1.2em;
+}
