@@ -16,7 +16,7 @@ const Dialog = ({title, dialogAction, children}) => (
 
 Dialog.propTypes = {
 	title: PropTypes.string.isRequired,
-	dialogAction: PropTypes.func,
+	dialogAction: PropTypes.func.isRequired,
 }
 
 export default Dialog

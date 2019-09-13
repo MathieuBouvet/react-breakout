@@ -12,17 +12,29 @@
 }
 
 .dialog {
-	width: 33vw;
+	width: 33vh;
 	height: 33vh;
 	background-color: white;
 	border-radius: 5px;
+
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 50px auto;
+	grid-template-areas: 
+		"header"
+		"body"
 }
 .dialog-header {
+	grid-area: header;
+	align-self: center;
 	font-size: 2em;
-	padding: 15px;
-	border-bottom: 1px grey solid;
 }
 .dialog-body {
-	width: 100%;
-	height: 100%;
+	grid-area: body;
+	border-top: 1px grey solid;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	cursor: pointer;
 }
