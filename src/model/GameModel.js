@@ -133,6 +133,16 @@ class GameModel extends Box{
 
 	}
 
+	playNextLevel(){
+		this.level++;
+		this.loadLevel(this.level);
+		this.paddle.leftPosition = this.width/2;
+		this.ball.stickedToPaddle = true;
+		this.ball.moveToNextPosition();
+		this.ball.angle = 90;
+		this.togglePause();
+	}
+
 }
 
 export default GameModel
