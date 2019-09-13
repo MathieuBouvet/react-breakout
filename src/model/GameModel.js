@@ -97,7 +97,13 @@ class GameModel extends Box{
 	}
 
 	loadLevel(level){
+		// empty bricks array
+		this.bricks.length = 0;
+
+		// get brick list setting
 		const brickList = Settings.levels["level"+level].bricks;
+
+		// populate bricks with bricks setting
 		for(let i=0 ; i<brickList.length ; i++){
 			let newBrick = BrickFactory.create(brickList[i]);
 			newBrick.updateBindValue(this.bindValue);
@@ -105,6 +111,7 @@ class GameModel extends Box{
 			this.bricks.push(newBrick);
 		}
 		this.level = level;
+		// count number of bricks to destroy (each one except UNBREAKABLE)
 		this.bricksNumber = this.bricks.reduce((acc, brick) => {
 			if(brick.type === BrickTypes.UNBREAKABLE){
 				return acc;
