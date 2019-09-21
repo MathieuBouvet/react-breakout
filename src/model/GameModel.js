@@ -67,6 +67,7 @@ class GameModel extends Box{
 		if(!this.ball.stickedToPaddle && !this.paused){
 			if(this.bricksNumber <= 0){
 				this.togglePause();
+				return;
 			}
 			const nextColliding = this.getNextCollisioning();
 			if(nextColliding !== null){
