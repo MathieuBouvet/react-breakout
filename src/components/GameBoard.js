@@ -119,8 +119,7 @@ class GameBoard extends Component {
 	}
 
 	handleGameWonClick = () => {
-		// not yet implemented
-		// this.gameModel.resetGame();
+		this.gameModel.resetGame();
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
 			ballLeftPosition: this.gameModel.ball.leftPosition,
