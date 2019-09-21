@@ -3,7 +3,7 @@ import Paddle from './PaddleModel'
 import Ball from './BallModel'
 import BrickFactory from './BrickFactory'
 
-import Settings, { BrickTypes } from './Settings'
+import Settings, { BrickTypes, GameState } from './Settings'
 
 import Box from './Box'
 
@@ -17,6 +17,8 @@ class GameModel extends Box{
 		this.level = 0;
 		this.levelNumber = this.getLevelNumber();
 		this.bricksNumber = 0;
+
+		this.gameState = GameState.RUNNING;
 
 		this.loadLevel(1);
 		this.paused = false;
