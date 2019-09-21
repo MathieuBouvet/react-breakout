@@ -158,6 +158,12 @@ class GameModel extends Box{
 		this.gameState = GameState.RUNNING;
 	}
 
+	resetGame(){
+		this.loadLevel(1);
+		this.initGame();
+		this.togglePause();
+	}
+
 	getLevelNumber(){
 		return Object.keys(Settings.levels).length;
 	}
