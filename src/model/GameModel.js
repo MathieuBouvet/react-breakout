@@ -25,6 +25,23 @@ class GameModel extends Box{
 
 		this.breakNormal = new Audio('4131.mp3');
 	}
+	
+	isGameRunning(){
+		return this.gameState === GameState.RUNNING;
+	}
+
+	isGameLost(){
+		return this.gameState === GameState.LOST;
+	}
+
+	isGameLevelCompleted(){
+		return this.gameState === GameState.LEVEL_COMPLETED;
+	}
+
+	isGameWon(){
+		return this.gameState === GameState.WON;
+	}
+
 
 	updatePaddlePosition(position){
 		// compensate position to center the paddle around the cursor
