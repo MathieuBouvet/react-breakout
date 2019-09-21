@@ -5,8 +5,10 @@ import './GameBoard.css'
 import GamingArea from './GamingArea'
 import SidePanel from './SidePanel'
 import NextLevelDialog from './NextLevelDialog'
+import GameWonDialog from './GameWonDialog'
 
 import GameModel from '../model/GameModel'
+import { GameState } from '../model/Settings'
 
 class GameBoard extends Component {
 	constructor(props) {
@@ -53,7 +55,12 @@ class GameBoard extends Component {
 					pauseHandler={this.handlePauseClick}
 				/>
 				{
-					this.gameModel.bricksNumber <= 0 && <NextLevelDialog nextLevelAction={this.handleNextLevelClick}/>
+					this.gameModel.gameState === GameState.LEVEL_COMPLETED &&
+						<NextLevelDialog nextLevelAction={this.handleNextLevelClick}/>
+				}
+				{
+					this.gameModel.gameState === GameState.WON &&
+						<GameWonDialog />
 				}
 			</section>
 		);
