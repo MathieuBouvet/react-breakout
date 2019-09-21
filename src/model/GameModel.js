@@ -20,12 +20,14 @@ class GameModel extends Box{
 
 		this.gameState = GameState.RUNNING;
 
+		this.life = 3;
+
 		this.loadLevel(1);
 		this.paused = false;
 
 		this.breakNormal = new Audio('4131.mp3');
 	}
-	
+
 	isGameRunning(){
 		return this.gameState === GameState.RUNNING;
 	}
@@ -82,8 +84,10 @@ class GameModel extends Box{
 	}
 
 	run(){
-		// no need to check for collision if ball is sticked to paddle, or if the game is paused
-		if(!this.ball.stickedToPaddle && !this.paused){
+		// no need to check for collision if ball is sticked to paddle,
+		// or if the game is paused,
+		// or if the game is not running
+		if(!this.ball.stickedToPaddle && !this.paused && this.isGameRunning()){
 			if(this.bricksNumber <= 0){
 				this.togglePause();
 				// check game won
@@ -98,7 +102,16 @@ class GameModel extends Box{
 			if(nextColliding !== null){
 				nextColliding.collide(this.ball);
 			}else if(this.willLoose()){
-
+				this.gameState = GameState.LOST_LIFE;
+				// We wait a bit, so the player register the lose
+				this.life--;
+				setTimeout(() => {
+					if(this.life <= 0){
+						this.gameState = GameState.LOST;
+					}else {
+						this.initGame();
+					}
+				}, 1000);
 			}else {
 				this.ball.moveToNextPosition();
 			}
