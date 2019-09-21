@@ -8,6 +8,7 @@ export const GameState = {
 	LEVEL_COMPLETED: 1,
 	WON: 2,
 	RUNNING: 3,
+	LOST_LIFE: 4,
 }
 const settings = {
 	templates: {
