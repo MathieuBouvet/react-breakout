@@ -146,12 +146,16 @@ class GameModel extends Box{
 	playNextLevel(){
 		this.level++;
 		this.loadLevel(this.level);
+		this.initGame();
+		this.togglePause();
+	}
+
+	initGame(){
 		this.paddle.leftPosition = this.width/2;
 		this.ball.stickedToPaddle = true;
 		this.ball.moveToNextPosition();
 		this.ball.angle = 90;
 		this.gameState = GameState.RUNNING;
-		this.togglePause();
 	}
 
 	getLevelNumber(){
