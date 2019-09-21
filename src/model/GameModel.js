@@ -89,7 +89,7 @@ class GameModel extends Box{
 		// or if the game is not running
 		if(!this.ball.stickedToPaddle && !this.paused && this.isGameRunning()){
 			if(this.bricksNumber <= 0){
-				this.togglePause();
+				this.gameState = GameState.WAIT;
 				// check game won
 				if(this.level === this.levelNumber){
 					this.gameState = GameState.WON;
@@ -177,7 +177,6 @@ class GameModel extends Box{
 		this.level++;
 		this.loadLevel(this.level);
 		this.initGame();
-		this.togglePause();
 	}
 
 	initGame(){
@@ -191,7 +190,6 @@ class GameModel extends Box{
 	resetGame(){
 		this.loadLevel(1);
 		this.initGame();
-		this.togglePause();
 	}
 
 	getLevelNumber(){
