@@ -150,6 +150,7 @@ class GameModel extends Box{
 		this.ball.stickedToPaddle = true;
 		this.ball.moveToNextPosition();
 		this.ball.angle = 90;
+		this.gameState = GameState.RUNNING;
 		this.togglePause();
 	}
 
