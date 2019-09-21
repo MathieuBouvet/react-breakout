@@ -12,7 +12,7 @@ const GameWonDialog = ({gameWonAction}) => (
 		<IconContext.Provider value={{ className: "replay-game-won-icon" }} >
 			<FaUndo />
 		</IconContext.Provider>
-		c'est gagné !
+		<div className="game-won-label">Rejouer</div>
 	</Dialog>
 )
 

@@ -1,0 +1,15 @@
+.replay-game-won-icon {
+	flex: 1 1 auto;
+	width: 100%;
+	color: darkgreen;
+	transition: color 250ms;
+}
+.replay-game-won-icon:hover {
+	color: green;
+}
+
+.game-won-label {
+	flex: 0 0 auto;
+	margin: 5px;
+	font-size: 1.2em;
+}
