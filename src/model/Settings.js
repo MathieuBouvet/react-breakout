@@ -3,6 +3,12 @@ export const BrickTypes = {
 	RESISTANT: 1,
 	UNBREAKABLE: 2,
 }
+export const GameState = {
+	LOST: 0,
+	LEVEL_COMPLETED: 1,
+	WON: 2,
+	RUNNING: 3,
+}
 const settings = {
 	templates: {
 		board: {
