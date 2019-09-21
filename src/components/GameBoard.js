@@ -60,7 +60,7 @@ class GameBoard extends Component {
 				}
 				{
 					this.gameModel.gameState === GameState.WON &&
-						<GameWonDialog />
+						<GameWonDialog gameWonAction={this.handleGameWonClick} />
 				}
 			</section>
 		);
@@ -111,6 +111,16 @@ class GameBoard extends Component {
 
 	handleNextLevelClick = () => {
 		this.gameModel.playNextLevel();
+		this.setState({
+			paddlePosition: this.gameModel.paddle.leftPosition,
+			ballLeftPosition: this.gameModel.ball.leftPosition,
+			ballTopPosition: this.gameModel.ball.topPosition,
+		});
+	}
+
+	handleGameWonClick = () => {
+		// not yet implemented
+		// this.gameModel.resetGame();
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
 			ballLeftPosition: this.gameModel.ball.leftPosition,
