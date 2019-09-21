@@ -9,6 +9,7 @@ export const GameState = {
 	WON: 2,
 	RUNNING: 3,
 	LOST_LIFE: 4,
+	WAIT: 5,
 }
 const settings = {
 	templates: {
