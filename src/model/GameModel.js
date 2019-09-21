@@ -69,6 +69,12 @@ class GameModel extends Box{
 		if(!this.ball.stickedToPaddle && !this.paused){
 			if(this.bricksNumber <= 0){
 				this.togglePause();
+				// check game won
+				if(this.level === this.levelNumber){
+					this.gameState = GameState.WON;
+				}else {
+					this.gameState = GameState.LEVEL_COMPLETED;
+				}
 				return;
 			}
 			const nextColliding = this.getNextCollisioning();
