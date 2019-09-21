@@ -15,6 +15,7 @@ class GameModel extends Box{
 		//this.addBindedChild("brick", new Brick());
 		this.bricks = [];
 		this.level = 0;
+		this.levelNumber = this.getLevelNumber();
 		this.bricksNumber = 0;
 
 		this.loadLevel(1);
@@ -141,6 +142,10 @@ class GameModel extends Box{
 		this.ball.moveToNextPosition();
 		this.ball.angle = 90;
 		this.togglePause();
+	}
+
+	getLevelNumber(){
+		return Object.keys(Settings.levels).length;
 	}
 
 }
