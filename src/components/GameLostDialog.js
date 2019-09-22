@@ -1,12 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FaUndo } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 import Dialog from "./Dialog";
 
 import "./GameLostDialog.css";
 
 const GameLostDialog = ({ gameLostAction }) => (
-	<Dialog title="Perdu :`(" dialogAction={gameLostAction}></Dialog>
+	<Dialog title="Perdu :`(" dialogAction={gameLostAction}>
+		<IconContext.Provider value={{ className: "replay-lost-game-icon" }}>
+			<FaUndo />
+		</IconContext.Provider>
+	</Dialog>
 );
 
 GameLostDialog.propTypes = {
