@@ -54,6 +54,10 @@ class GameModel extends Box {
 		return Math.min(widthCoefficient, heightCoefficient);
 	}
 
+	getLoadLevelCoefficient() {
+		return this.width / Settings.templates.board.binded.width;
+	}
+
 	updatePaddlePosition(position) {
 		// compensate position to center the paddle around the cursor
 		position -= this.paddle.width / 2;
@@ -153,7 +157,7 @@ class GameModel extends Box {
 		// populate bricks with bricks setting
 		for (let i = 0; i < brickList.length; i++) {
 			let newBrick = BrickFactory.create(brickList[i]);
-			newBrick.updateBindValue(this.bindValue);
+			newBrick.updateBindValue(this.getLoadLevelCoefficient());
 			newBrick.setModelReference(this);
 			this.bricks.push(newBrick);
 		}
