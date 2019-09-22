@@ -86,7 +86,7 @@ class GameBoard extends Component {
 
 	// React synthetic event are pooled, and not available asyncronously
 	// So we need this trick with two functions
-	handleMouseMove = event => {
+	handleMouseMove = (event) => {
 		// we send the value, not the event, that's the trick
 		if (!this.gameModel.paused) {
 			this.throttledMouseMoveHandler(event.nativeEvent.offsetX);
@@ -106,7 +106,7 @@ class GameBoard extends Component {
 		}
 	}
 
-	handleClick = event => {
+	handleClick = (event) => {
 		this.gameModel.ball.unstick();
 	};
 
