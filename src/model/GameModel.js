@@ -9,6 +9,7 @@ import Box from "./Box";
 class GameModel extends Box {
 	constructor(reduction) {
 		super("board", reduction);
+		this.setting("boxMargin");
 		this.addBindedChild("paddle", new Paddle());
 		this.addBindedChild("ball", new Ball(this));
 		//this.addBindedChild("brick", new Brick());
