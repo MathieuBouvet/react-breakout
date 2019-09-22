@@ -12,7 +12,7 @@ import "./GamingArea.css";
 const GamingArea = ({ gameModelSize, paddle, ball, bricks, mouseMoveHandler, clickHandler }) => (
 	<div className="gameBoard" style={{ width: gameModelSize.width + "px", height: gameModelSize.height + "px" }}>
 		<div className="mouseMoveOverlay" onMouseMove={(e) => mouseMoveHandler(e)} onClick={() => clickHandler()}></div>
-		<Paddle {...paddle} />
+		<Paddle {...paddle} margin={gameModelSize.boxMargin} />
 		<Ball {...ball} />
 		{bricks.map((brick) => (
 			<Brick
@@ -21,6 +21,7 @@ const GamingArea = ({ gameModelSize, paddle, ball, bricks, mouseMoveHandler, cli
 				left={brick.leftPosition}
 				width={brick.width}
 				height={brick.height}
+				margin={gameModelSize.boxMargin}
 				display={!brick.markForRemove}
 				type={brick.type}
 				life={brick.type === BrickTypes.UNBREAKABLE ? -1 : brick.life}
