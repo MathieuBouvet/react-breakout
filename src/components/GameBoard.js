@@ -1,32 +1,33 @@
-import React, { Component } from "react"
-import throttle from "lodash.throttle"
-import "./GameBoard.css"
+import React, { Component } from "react";
+import throttle from "lodash.throttle";
+import "./GameBoard.css";
 
-import GamingArea from "./GamingArea"
-import SidePanel from "./SidePanel"
-import NextLevelDialog from "./NextLevelDialog"
-import GameWonDialog from "./GameWonDialog"
+import GamingArea from "./GamingArea";
+import SidePanel from "./SidePanel";
+import NextLevelDialog from "./NextLevelDialog";
+import GameWonDialog from "./GameWonDialog";
+import GameLostDialog from "./GameLostDialog";
 
-import GameModel from "../model/GameModel"
+import GameModel from "../model/GameModel";
 
 class GameBoard extends Component {
 	constructor(props) {
-		super(props)
-		this.gameModel = new GameModel(1)
+		super(props);
+		this.gameModel = new GameModel(1);
 		this.state = {
 			paddlePosition: 0,
 			ballLeftPosition: this.gameModel.ball.leftPosition,
 			ballTopPosition: this.gameModel.ball.topPosition,
-		}
+		};
 		// throttling and binding
 		this.throttledMouseMoveHandler = throttle(
 			this.throttledMouseMoveHandler.bind(this),
 			10
-		)
+		);
 	}
 
 	render() {
-		const { paddlePosition, ballTopPosition, ballLeftPosition } = this.state
+		const { paddlePosition, ballTopPosition, ballLeftPosition } = this.state;
 		return (
 			<section className="App-body">
 				<div className="game-container">
@@ -64,20 +65,20 @@ class GameBoard extends Component {
 					<GameWonDialog gameWonAction={this.handleGameWonClick} />
 				)}
 			</section>
-		)
+		);
 	}
 
 	componentDidMount() {
 		this.runTheGame = setInterval(() => {
-			this.gameModel.run()
+			this.gameModel.run();
 			this.setState({
 				ballLeftPosition: this.gameModel.ball.leftPosition,
 				ballTopPosition: this.gameModel.ball.topPosition,
-			})
-		}, 40)
+			});
+		}, 40);
 	}
 	componentWillUnmount() {
-		clearInterval(this.runTheGame)
+		clearInterval(this.runTheGame);
 	}
 
 	// React synthetic event are pooled, and not available asyncronously
@@ -85,48 +86,48 @@ class GameBoard extends Component {
 	handleMouseMove = event => {
 		// we send the value, not the event, that's the trick
 		if (!this.gameModel.paused) {
-			this.throttledMouseMoveHandler(event.nativeEvent.offsetX)
+			this.throttledMouseMoveHandler(event.nativeEvent.offsetX);
 		}
-	}
+	};
 	throttledMouseMoveHandler(position) {
-		this.gameModel.updatePaddlePosition(position)
+		this.gameModel.updatePaddlePosition(position);
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
-		})
+		});
 		if (this.gameModel.ball.stickedToPaddle) {
-			this.gameModel.ball.moveToNextPosition()
+			this.gameModel.ball.moveToNextPosition();
 			this.setState({
 				ballTopPosition: this.gameModel.ball.topPosition,
 				ballLeftPosition: this.gameModel.ball.leftPosition,
-			})
+			});
 		}
 	}
 
 	handleClick = event => {
-		this.gameModel.ball.unstick()
-	}
+		this.gameModel.ball.unstick();
+	};
 
 	handlePauseClick = () => {
-		this.gameModel.togglePause()
-	}
+		this.gameModel.togglePause();
+	};
 
 	handleNextLevelClick = () => {
-		this.gameModel.playNextLevel()
+		this.gameModel.playNextLevel();
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
 			ballLeftPosition: this.gameModel.ball.leftPosition,
 			ballTopPosition: this.gameModel.ball.topPosition,
-		})
-	}
+		});
+	};
 
 	handleGameWonClick = () => {
-		this.gameModel.resetGame()
+		this.gameModel.resetGame();
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
 			ballLeftPosition: this.gameModel.ball.leftPosition,
 			ballTopPosition: this.gameModel.ball.topPosition,
-		})
-	}
+		});
+	};
 }
 
-export default GameBoard
+export default GameBoard;
