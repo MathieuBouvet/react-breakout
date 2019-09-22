@@ -1,14 +1,13 @@
+import Paddle from "./PaddleModel";
+import Ball from "./BallModel";
+import BrickFactory from "./BrickFactory";
 
-import Paddle from './PaddleModel'
-import Ball from './BallModel'
-import BrickFactory from './BrickFactory'
+import Settings, { BrickTypes, GameState } from "./Settings";
 
-import Settings, { BrickTypes, GameState } from './Settings'
+import Box from "./Box";
 
-import Box from './Box'
-
-class GameModel extends Box{
-	constructor(reduction){
+class GameModel extends Box {
+	constructor(reduction) {
 		super("board", reduction);
 		this.addBindedChild("paddle", new Paddle());
 		this.addBindedChild("ball", new Ball(this));
@@ -25,94 +24,91 @@ class GameModel extends Box{
 		this.loadLevel(1);
 		this.paused = false;
 
-		this.breakNormal = new Audio('4131.mp3');
+		this.breakNormal = new Audio("4131.mp3");
 	}
 
-	isGameRunning(){
+	isGameRunning() {
 		return this.gameState === GameState.RUNNING;
 	}
 
-	isGameLost(){
+	isGameLost() {
 		return this.gameState === GameState.LOST;
 	}
 
-	isGameLevelCompleted(){
+	isGameLevelCompleted() {
 		return this.gameState === GameState.LEVEL_COMPLETED;
 	}
 
-	isGameWon(){
+	isGameWon() {
 		return this.gameState === GameState.WON;
 	}
 
-
-	updatePaddlePosition(position){
+	updatePaddlePosition(position) {
 		// compensate position to center the paddle around the cursor
-		position -= this.paddle.width/2;
+		position -= this.paddle.width / 2;
 
 		// stop paddle to the right
-		if(position <= 0){
+		if (position <= 0) {
 			position = 0;
 		}
 		//stop paddle to the left
-		if(position >= this.width - this.paddle.width){
+		if (position >= this.width - this.paddle.width) {
 			position = this.width - this.paddle.width;
 		}
 		this.paddle.leftPosition = position;
 	}
 
-	willCollide(position){
-		return (
-			position.left < 0 || position.left > this.width || position.top < 0
-		)
+	willCollide(position) {
+		return position.left < 0 || position.left > this.width || position.top < 0;
 	}
 
-	willLoose(){
+	willLoose() {
 		const position = this.ball.getNextPosition();
 		return position.top > this.height + 20;
 	}
 
 	// return the angle of the perpendicular of wall collisioning
 	// 180 for top wall, 90 for right or left
-	collisionHow(ball){
+	collisionHow(ball) {
 		const position = ball.getNextPosition();
-		if(position.left < 0 || position.left > this.width){
+		if (position.left < 0 || position.left > this.width) {
 			return 90;
 		}
-		if(position.top < 0){
+		if (position.top < 0) {
 			return 180;
 		}
 	}
 
-	run(){
+	run() {
 		// no need to check for collision if ball is sticked to paddle,
 		// or if the game is paused,
 		// or if the game is not running
-		if(!this.ball.stickedToPaddle && !this.paused && this.isGameRunning()){
-			if(this.bricksNumber <= 0){
+		if (!this.ball.stickedToPaddle && !this.paused && this.isGameRunning()) {
+			if (this.bricksNumber <= 0) {
 				this.gameState = GameState.WAIT;
 				// check game won
-				if(this.level === this.levelNumber){
+				if (this.level === this.levelNumber) {
 					this.gameState = GameState.WON;
-				}else {
+				} else {
 					this.gameState = GameState.LEVEL_COMPLETED;
 				}
 				return;
 			}
 			const nextColliding = this.getNextCollisioning();
-			if(nextColliding !== null){
+			if (nextColliding !== null) {
 				nextColliding.collide(this.ball);
-			}else if(this.willLoose()){
+			} else if (this.willLoose()) {
 				this.gameState = GameState.LOST_LIFE;
 				// We wait a bit, so the player register the lose
 				this.life--;
 				setTimeout(() => {
-					if(this.life <= 0){
+					if (this.life <= 0) {
 						this.gameState = GameState.LOST;
-					}else {
+					} else {
 						this.initGame();
 					}
 				}, 1000);
-			}else {
+			} else {
 				this.ball.moveToNextPosition();
 			}
 		}
@@ -120,31 +116,31 @@ class GameModel extends Box{
 
 	// return the next object to collide with the ball, or null if nothing collide
 	// WIP : It must be completely dynamic, ie loop through all Box objects...
-	getNextCollisioning(){
-		const nextBallPosition = this.ball.getNextPosition()
-		if(this.willCollide(nextBallPosition)){
+	getNextCollisioning() {
+		const nextBallPosition = this.ball.getNextPosition();
+		if (this.willCollide(nextBallPosition)) {
 			return this;
 		}
-		if(this.paddle.willCollide(nextBallPosition)){
+		if (this.paddle.willCollide(nextBallPosition)) {
 			return this.paddle;
 		}
-		for(let i=0 ; i<this.bricks.length ; i++){
-			if(this.bricks[i].willCollide(nextBallPosition)){
+		for (let i = 0; i < this.bricks.length; i++) {
+			if (this.bricks[i].willCollide(nextBallPosition)) {
 				return this.bricks[i];
 			}
 		}
 		return null;
 	}
 
-	loadLevel(level){
+	loadLevel(level) {
 		// empty bricks array
 		this.bricks.length = 0;
 
 		// get brick list setting
-		const brickList = Settings.levels["level"+level].bricks;
+		const brickList = Settings.levels["level" + level].bricks;
 
 		// populate bricks with bricks setting
-		for(let i=0 ; i<brickList.length ; i++){
+		for (let i = 0; i < brickList.length; i++) {
 			let newBrick = BrickFactory.create(brickList[i]);
 			newBrick.updateBindValue(this.bindValue);
 			newBrick.setModelReference(this);
@@ -153,48 +149,46 @@ class GameModel extends Box{
 		this.level = level;
 		// count number of bricks to destroy (each one except UNBREAKABLE)
 		this.bricksNumber = this.bricks.reduce((acc, brick) => {
-			if(brick.type === BrickTypes.UNBREAKABLE){
+			if (brick.type === BrickTypes.UNBREAKABLE) {
 				return acc;
 			}
 			return ++acc;
-		}, 0)
+		}, 0);
 	}
 
-	updateBindValue(newBindValue){
+	updateBindValue(newBindValue) {
 		super.updateBindValue(newBindValue);
-		for(let i=0 ; i<this.bricks.length ; i++){
+		for (let i = 0; i < this.bricks.length; i++) {
 			this.bricks[i].updateBindValue(newBindValue);
 		}
 	}
 
-	togglePause(){
+	togglePause() {
 		this.paused = !this.paused;
 		console.log(this.bricksNumber);
-
 	}
 
-	playNextLevel(){
+	playNextLevel() {
 		this.level++;
 		this.loadLevel(this.level);
 		this.initGame();
 	}
 
-	initGame(){
+	initGame() {
 		this.ball.stickedToPaddle = true;
 		this.ball.moveToNextPosition();
 		this.ball.angle = 90;
 		this.gameState = GameState.RUNNING;
 	}
 
-	resetGame(){
+	resetGame() {
 		this.loadLevel(1);
 		this.initGame();
 	}
 
-	getLevelNumber(){
+	getLevelNumber() {
 		return Object.keys(Settings.levels).length;
 	}
-
 }
 
-export default GameModel
+export default GameModel;
