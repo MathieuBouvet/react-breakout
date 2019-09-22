@@ -64,6 +64,7 @@ class GameBoard extends Component {
 				{this.gameModel.isGameWon() && (
 					<GameWonDialog gameWonAction={this.handleGameWonClick} />
 				)}
+				{this.gameModel.isGameLost() && <GameLostDialog />}
 			</section>
 		);
 	}
