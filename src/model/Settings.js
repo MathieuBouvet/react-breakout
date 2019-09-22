@@ -2,7 +2,7 @@ export const BrickTypes = {
 	NORMAL: 0,
 	RESISTANT: 1,
 	UNBREAKABLE: 2,
-}
+};
 export const GameState = {
 	LOST: 0,
 	LEVEL_COMPLETED: 1,
@@ -10,7 +10,7 @@ export const GameState = {
 	RUNNING: 3,
 	LOST_LIFE: 4,
 	WAIT: 5,
-}
+};
 const settings = {
 	templates: {
 		board: {
@@ -21,7 +21,7 @@ const settings = {
 			free: {
 				topPosition: 0,
 				leftPosition: 0,
-			}
+			},
 		},
 		paddle: {
 			binded: {
@@ -41,7 +41,7 @@ const settings = {
 			free: {
 				angle: 90,
 				stickedToPaddle: true,
-			}
+			},
 		},
 		brick: {
 			binded: {
@@ -49,11 +49,11 @@ const settings = {
 				topPosition: 0,
 				height: 45,
 				width: 66,
-			}
-		}
+			},
+		},
 	},
 	levels: {
-		level1:{
+		level1: {
 			bricks: [
 				{
 					type: BrickTypes.UNBREAKABLE,
@@ -65,7 +65,7 @@ const settings = {
 					topPosition: 150,
 					leftPosition: 150,
 				},
-			]
+			],
 		},
 		level2: {
 			bricks: [
@@ -80,7 +80,7 @@ const settings = {
 					leftPosition: 250,
 				},
 			],
-		}
-	}
-}
-export default settings
+		},
+	},
+};
+export default settings;
