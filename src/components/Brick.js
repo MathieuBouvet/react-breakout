@@ -22,9 +22,9 @@ function generateClassName(display, type, life) {
 	return base;
 }
 
-const Brick = ({ top, left, height, width, display, type, life }) => (
+const Brick = ({ top, left, height, width, margin, display, type, life }) => (
 	<Positionable top={top} left={left}>
-		<Sizable width={width} height={height}>
+		<Sizable width={width} height={height} margin={margin}>
 			<div className={generateClassName(display, type, life)}></div>
 		</Sizable>
 	</Positionable>
@@ -35,6 +35,7 @@ Brick.propTypes = {
 	left: PropTypes.number.isRequired,
 	width: PropTypes.number.isRequired,
 	height: PropTypes.number.isRequired,
+	margin: PropTypes.number.isRequired,
 	display: PropTypes.bool.isRequired,
 	type: PropTypes.number.isRequired,
 	life: PropTypes.number.isRequired,
