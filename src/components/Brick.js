@@ -1,34 +1,34 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import Positionable from './Positionable'
-import Sizable from './Sizable'
+import Positionable from "./Positionable";
+import Sizable from "./Sizable";
 
-import { BrickTypes } from '../model/Settings'
+import { BrickTypes } from "../model/Settings";
 
-import './Brick.css'
+import "./Brick.css";
 
-function generateClassName(display, type, life){
+function generateClassName(display, type, life) {
 	let base = "brick";
-	if(!display){
+	if (!display) {
 		base += " hide";
 	}
-	if(type === BrickTypes.RESISTANT){
+	if (type === BrickTypes.RESISTANT) {
 		return `${base} resistant${life}`;
 	}
-	if(type === BrickTypes.UNBREAKABLE){
+	if (type === BrickTypes.UNBREAKABLE) {
 		return `${base} unbreakable`;
 	}
 	return base;
 }
 
-const Brick = ({top, left, height, width, display, type, life}) => (
+const Brick = ({ top, left, height, width, display, type, life }) => (
 	<Positionable top={top} left={left}>
 		<Sizable width={width} height={height}>
 			<div className={generateClassName(display, type, life)}></div>
 		</Sizable>
 	</Positionable>
-)
+);
 
 Brick.propTypes = {
 	top: PropTypes.number.isRequired,
@@ -38,6 +38,6 @@ Brick.propTypes = {
 	display: PropTypes.bool.isRequired,
 	type: PropTypes.number.isRequired,
 	life: PropTypes.number.isRequired,
-}
+};
 
-export default Brick
+export default Brick;
