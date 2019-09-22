@@ -183,6 +183,7 @@ class GameModel extends Box {
 
 	resetGame() {
 		this.loadLevel(1);
+		this.life = 3;
 		this.initGame();
 	}
 
