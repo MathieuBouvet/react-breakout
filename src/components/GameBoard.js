@@ -20,10 +20,7 @@ class GameBoard extends Component {
 			ballTopPosition: this.gameModel.ball.topPosition,
 		};
 		// throttling and binding
-		this.throttledMouseMoveHandler = throttle(
-			this.throttledMouseMoveHandler.bind(this),
-			10
-		);
+		this.throttledMouseMoveHandler = throttle(this.throttledMouseMoveHandler.bind(this), 10);
 	}
 
 	render() {
@@ -58,15 +55,9 @@ class GameBoard extends Component {
 					life={this.gameModel.life}
 					pauseHandler={this.handlePauseClick}
 				/>
-				{this.gameModel.isGameLevelCompleted() && (
-					<NextLevelDialog nextLevelAction={this.handleNextLevelClick} />
-				)}
-				{this.gameModel.isGameWon() && (
-					<GameWonDialog gameWonAction={this.handleGameWonOrLostClick} />
-				)}
-				{this.gameModel.isGameLost() && (
-					<GameLostDialog gameLostAction={this.handleGameWonOrLostClick} />
-				)}
+				{this.gameModel.isGameLevelCompleted() && <NextLevelDialog nextLevelAction={this.handleNextLevelClick} />}
+				{this.gameModel.isGameWon() && <GameWonDialog gameWonAction={this.handleGameWonOrLostClick} />}
+				{this.gameModel.isGameLost() && <GameLostDialog gameLostAction={this.handleGameWonOrLostClick} />}
 			</section>
 		);
 	}
