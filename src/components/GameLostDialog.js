@@ -12,6 +12,7 @@ const GameLostDialog = ({ gameLostAction }) => (
 		<IconContext.Provider value={{ className: "replay-lost-game-icon" }}>
 			<FaUndo />
 		</IconContext.Provider>
+		<div className="replay-lost-game-label">Rejouer</div>
 	</Dialog>
 );
 
