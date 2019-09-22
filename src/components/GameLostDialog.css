@@ -1,0 +1,15 @@
+.replay-lost-game-icon {
+	flex: 1 1 auto;
+	width: 100%;
+	color: darkorange;
+	transition: color 250ms;
+}
+.replay-lost-game-icon:hover {
+	color: orange;
+}
+
+.game-lost-label {
+	flex: 0 0 auto;
+	margin: 5px;
+	font-size: 1.2em;
+}
