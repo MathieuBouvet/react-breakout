@@ -62,7 +62,7 @@ class GameBoard extends Component {
 					<NextLevelDialog nextLevelAction={this.handleNextLevelClick} />
 				)}
 				{this.gameModel.isGameWon() && (
-					<GameWonDialog gameWonAction={this.handleGameWonClick} />
+					<GameWonDialog gameWonAction={this.handleGameWonOrLostClick} />
 				)}
 				{this.gameModel.isGameLost() && <GameLostDialog />}
 			</section>
@@ -121,7 +121,7 @@ class GameBoard extends Component {
 		});
 	};
 
-	handleGameWonClick = () => {
+	handleGameWonOrLostClick = () => {
 		this.gameModel.resetGame();
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
