@@ -32,6 +32,7 @@ class GameBoard extends Component {
 						gameModelSize={{
 							width: this.gameModel.width,
 							height: this.gameModel.height,
+							boxMargin: this.gameModel.boxMargin,
 						}}
 						paddle={{
 							top: this.gameModel.paddle.topPosition,
