@@ -180,7 +180,6 @@ class GameModel extends Box{
 	}
 
 	initGame(){
-		this.paddle.leftPosition = this.width/2;
 		this.ball.stickedToPaddle = true;
 		this.ball.moveToNextPosition();
 		this.ball.angle = 90;
