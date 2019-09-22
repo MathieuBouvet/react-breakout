@@ -44,6 +44,16 @@ class GameModel extends Box {
 		return this.gameState === GameState.WON;
 	}
 
+	resizeToFit(width, height) {
+		this.updateBindValue(this.getFittingCoefficient(width, height));
+	}
+
+	getFittingCoefficient(width, height) {
+		const widthCoefficient = width / this.width;
+		const heightCoefficient = height / this.height;
+		return Math.min(widthCoefficient, heightCoefficient);
+	}
+
 	updatePaddlePosition(position) {
 		// compensate position to center the paddle around the cursor
 		position -= this.paddle.width / 2;
