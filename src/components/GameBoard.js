@@ -10,6 +10,8 @@ import GameLostDialog from "./GameLostDialog";
 
 import GameModel from "../model/GameModel";
 
+const boardGutter = 50;
+
 class GameBoard extends Component {
 	constructor(props) {
 		super(props);
@@ -21,13 +23,14 @@ class GameBoard extends Component {
 		};
 		// throttling and binding
 		this.throttledMouseMoveHandler = throttle(this.throttledMouseMoveHandler.bind(this), 10);
+		this.gameContainerRef = React.createRef();
 	}
 
 	render() {
 		const { paddlePosition, ballTopPosition, ballLeftPosition } = this.state;
 		return (
 			<section className="App-body">
-				<div className="game-container">
+				<div ref={this.gameContainerRef} className="game-container">
 					<GamingArea
 						gameModelSize={{
 							width: this.gameModel.width,
@@ -71,9 +74,12 @@ class GameBoard extends Component {
 				ballTopPosition: this.gameModel.ball.topPosition,
 			});
 		}, 40);
+		this.resizeGame();
+		window.addEventListener("resize", this.resizeGame);
 	}
 	componentWillUnmount() {
 		clearInterval(this.runTheGame);
+		window.removeEventListener("resize", this.resizeGame);
 	}
 
 	// React synthetic event are pooled, and not available asyncronously
@@ -104,6 +110,7 @@ class GameBoard extends Component {
 
 	handlePauseClick = () => {
 		this.gameModel.togglePause();
+		console.log(this.gameModel);
 	};
 
 	handleNextLevelClick = () => {
@@ -117,6 +124,18 @@ class GameBoard extends Component {
 
 	handleGameWonOrLostClick = () => {
 		this.gameModel.resetGame();
+		this.setState({
+			paddlePosition: this.gameModel.paddle.leftPosition,
+			ballLeftPosition: this.gameModel.ball.leftPosition,
+			ballTopPosition: this.gameModel.ball.topPosition,
+		});
+	};
+
+	resizeGame = () => {
+		this.gameModel.resizeToFit(
+			this.gameContainerRef.current.offsetWidth - 2 * boardGutter,
+			this.gameContainerRef.current.offsetHeight - 2 * boardGutter
+		);
 		this.setState({
 			paddlePosition: this.gameModel.paddle.leftPosition,
 			ballLeftPosition: this.gameModel.ball.leftPosition,
