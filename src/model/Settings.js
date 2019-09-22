@@ -17,6 +17,7 @@ const settings = {
 			binded: {
 				height: 625,
 				width: 1000,
+				boxMargin: 5,
 			},
 			free: {
 				topPosition: 0,
